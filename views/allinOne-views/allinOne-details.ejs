@@ -1,0 +1,16 @@
+<%- include('../includes/_header') -%>
+
+   <section>
+        <h3><%= allinOne.title %></h3>
+        <img src="/images/allinOne/<%= allinOne.image %>" alt="thinkPad gen 1 image">
+        <ul>
+            <% allinOne.description.forEach( element => { %>
+                <li> <%= element %> </li>
+            <% }); %>
+        </ul>
+        <p> <%= allinOne.price %> </p>
+        <p>Code de réduction: SPRING</p>
+        <p> Quantité totale disponible en ce moment:<%= allinOne.quantity %> ordinateurs tout en un</p>
+    </section>
+
+<%- include('../includes/_footer') -%>

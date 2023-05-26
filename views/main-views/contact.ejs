@@ -1,0 +1,32 @@
+<%- include('../includes/_header') -%>
+
+  <div class="userform">
+      <h2>Contact-nous:</h2>
+      <address>
+          <div>
+              <label><i class="fa-solid fa-envelope"></i> E-mail: </label>
+              <a href="digital-products@dp.io">digital-products@dp.io</a>
+          </div>
+          <div>
+              <label><i class="fa-solid fa-phone-volume"></i> Telephone: </label>
+              <a href="tel:+13115552368">(311) 555-2368</a>
+          </div>
+      </address>
+
+      <h2><i class="fa-regular fa-message"></i> Envoyez-nous un message:</h2>
+      <form method="post" action="/contact" class="contact_form">
+          <div>
+            <input type="text"  name="lastname" placeholder="nom" aria-label="champs obligatoire" required>
+            <input type="email" name="email" placeholder="E-mail" aria-label="champs obligatoire" required>
+            <input type="text" name="subject" placeholder="Sujet">
+          </div>
+          <div>
+            <textarea type="text" name="message" placeholder="Message" rows="10" cols="40" aria-label="champs obligatoire" required><i class="fa-solid fa-message"></i></textarea>
+          </div>
+          <div class="button">
+            <button type="submit">Envoyer</button>
+          </div>
+      </form>
+  </div>
+
+<%- include('../includes/_footer') -%>

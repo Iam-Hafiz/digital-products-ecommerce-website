@@ -1,0 +1,29 @@
+
+<% if(allinOnes.length > 0) { %>
+    <% allinOnes.forEach((computer) => {  %>
+        <div class="product_specifications" aria-label="ordinateurs portables">
+            <h3><%= computer.title %></h3>
+            <a href="/all-inOne/details/<%= computer._id %>" class="img_wrapper" tabindex="-1"><img src="../images/allinOne/<%= computer.image %>" alt="thinkPad gen 1 image" tabindex="0"></a>
+            <ul>
+                <% computer.description.forEach( element => { %>
+                        <li> <%= element %> </li>
+                <% }); %>
+            </ul>
+            <div class="toggle_btn" role="button" tabindex="0">
+                <span class="toggle_text">Afficher les spécifications complètes</span>
+                <span><i class="fa-solid fa-angle-down"></i></span>
+            </div>
+            <div class="more-details-link-wrapper">
+                <a class= "more-details-link" href="/all-inOne/details/<%= computer._id %>">En Savoir Plus</a>
+            </div>
+            <div> <%= computer.price %></div>
+            <div>Code de réduction: SPRING</div>
+            <div class="button">
+                <button>Ajouter Au Panier</button>
+            </div>
+        </div>
+    <% }) %>
+<% } else {%>
+    <p>Les ordinateurs tout en un serons disponibles prochainement</p>
+<% } %>
+

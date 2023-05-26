@@ -1,0 +1,60 @@
+
+<%- include('../includes/_header') -%>
+
+    <section >
+        <h2>Espace d'administrateur</h2>
+        <div class="espace_admin">
+            <div>
+                <h3>Ordinateurs portables</h3>
+                <h4>Statistiques:</h4>
+                <ul>
+                    <% if(countlaptops && totalLaptops && totalPrice) { %>
+                        <li>Il y'a <%= countlaptops %> ordinateurs portables divers</li>
+                        <% let sum = 0; %>
+                        <% totalLaptops.forEach( quantity => { %>
+                            <% sum = sum + quantity.total %>
+                        <% }) %>
+                        <li>Quantity totale des ordinateurs portables à prix minimum 1600 €: <%= sum %></li>
+                        
+                        <% let sumPrice = 0; %>
+                        <% totalPrice.forEach( price => { %>
+                            <% sumPrice = sumPrice + price.totalAmount %>
+                        <% }) %>
+                        <li>Prix totale des ordinateurs portables: <%= sumPrice %>,00 €</li>
+                    <% } %>
+                </ul>
+                <h4>Mettre à jour:</h4>
+                <ul>
+                    <li><a href="/get-laptop">Trouver un ordinateur</a></li>
+                    <li><a href="/get-laptop">Suprimer un ordinateur</a></li>
+                    <li><a href="/add-laptop">Ajouter un ordinateur</a></li>
+                    <li><a href="/get-laptop">Modifier un ordinateur</a></li>
+                </ul>
+                <h4>la list complète:</h4>
+                <ul>
+                    <% if(laptops){ %>
+                        <% laptops.forEach(laptop => { %>
+                            <li>Titre: <%= laptop.title %>, Prix: <%= laptop.price %>, Quantity: <%= laptop.quantity%></li>
+                        <% }) %>
+                    <% } %>
+                </ul>
+            </div>
+            <div>
+                <h3>Utilisateurs</h3>
+                <h4>Statistiques:</h4>
+                <ul>
+                    <% if(countUsers) { %>
+                        <li>Il y'a <%= countUsers %> utilisateurs, administrateur exclu.</li>
+                    <% } %>
+                </ul>
+                <h4>Statistiques des nouveaux utilisateurs au cours des 12 derniers mois: voici la somme total pour chaque mois</h4>
+                <ul>
+                    <% data.forEach( result => { %>
+                        <li>Mois: <%= result._id %>, total: <%= result.total %> utilisateurs</li>
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+<%- include('../includes/_footer') -%>

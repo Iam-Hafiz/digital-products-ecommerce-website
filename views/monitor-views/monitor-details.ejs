@@ -1,0 +1,16 @@
+<%- include('../includes/_header') -%>
+
+   <section>
+        <h3><%= monitor.title %></h3>
+        <img src="/images/monitors/<%= monitor.image %>" alt="thinkPad gen 1 image">
+        <ul>
+            <% monitor.description.forEach( element => { %>
+                <li> <%= element %> </li>
+            <% }); %>
+        </ul>
+        <p> <%= monitor.price %> </p>
+        <p>Code de réduction: SPRING</p>
+        <p> Quantité totale disponible en ce moment: <%= monitor.quantity %> moniteurs</p>
+    </section>
+
+<%- include('../includes/_footer') -%>

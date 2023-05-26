@@ -1,0 +1,60 @@
+
+<%- include('../includes/_header') -%>
+    <div class="userform">
+        <h3>Modifier un nouvel ordinateur portable:</h3>
+        <form  method="post" encType="multipart/form-data" action="/update-laptop/<%= laptop._id %>">
+            <div>
+                <label for="title">Titre ou marque</label>
+                <input id="title" type="text" name="title" value="<%= laptop.title %>">
+            </div>
+            <div>
+                <label for="image">Image</label>
+                <input type="file" id="image" name="image" accept=".jpg, .jpeg, .png">
+            </div>
+            <div>
+                <label for="cpu">CPU</label>
+                <input id="cpu" type="text" name="cpu" value="<%= laptop.description[0] %>">
+            </div>
+            <div>
+                <label for="os">Systeme d'exploitation</label>
+                <input id="os" type="text" name="os" value="<%= laptop.description[1] %>">
+            </div>
+            <div>
+                <label for="ram">Mémoire RAM</label>
+                <input id="ram" type="text" name="ram" value="<%= laptop.description[2] %>">
+            </div>
+            <div>
+                <label for="ssd">Disque dur</label>
+                <input id="ssd" type="text" name="ssd" value="<%= laptop.description[3] %>">
+            </div>
+            <div>
+                <label for="gpu">Carte graphique</label>
+                <input id="gpu" type="text" name="gpu" value="<%= laptop.description[4] %>">
+            </div>
+            <div>
+                <label for="battery">Batterie</label>
+                <input id="battery" type="text" name="battery" value="<%= laptop.description[5] %>">
+            </div>
+            <div>
+                <label for="guarantee">Garantie</label>
+                <input id="guarantee" type="text" name="guarantee" value="<%= laptop.description[6] %>">
+            </div>
+            <div>
+                <label for="other">Autre</label>
+             <input id="other" type="text" name="other" value="<%= laptop.description[7] %>">
+            </div>
+            <div>
+                <label for="price">Prix en €</label>
+                <input id="price" type="number" name="price" value="<%= laptop.price %>">
+            </div>
+            <div>
+                <label for="quantity">quantité</label>
+                <input id="quantity" type="number" name="quantity" value="<%= laptop.quantity %>">
+             </div>
+            <div class="button">
+                <button type="submit">Modifier</button>
+            </div>
+        </form>
+    </div>
+<%- include('../includes/_footer') -%>
+

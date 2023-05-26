@@ -1,0 +1,18 @@
+<%- include('../includes/_header') -%>
+
+   <section>
+        <h3><%= laptop.title %></h3>
+        <img src="../images/laptops/<%= laptop.image %>" alt="thinkPad gen 1 image">
+        <ul>
+            <% laptop.description.forEach( element => { %>
+                <li> <%= element %> </li>
+            <% }); %>
+        </ul>
+        <p> <%= laptop.price %>,00 €</p>
+        <p>Code de réduction: SPRING</p>
+        <p> quantité totale disponible en ce moment:<%= laptop.quantity %> ordinateurs portables</p>
+        <a href="/delete-laptop/<%= laptop._id %>" class="deleteLaptopLink"><i class="fa-solid fa-trash" style="color: #0080ff;"></i> Suprimer</a>
+        <a href="/update-laptop/<%= laptop._id %>" class="deleteLaptopLink"><i class="fa-solid fa-square-pen" style="color: #0080ff;"></i> Modifier</a>
+    </section>
+
+<%- include('../includes/_footer') -%>

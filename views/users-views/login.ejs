@@ -1,0 +1,42 @@
+<%- include('../includes/_header') -%>
+
+    <section class="userform">
+        <div class="login_wrapper">
+            <h2>S'identifier</h2>
+            <h3>Utilisateurs existants</h3>
+            <p>* Signale un champ obligatoire</p>
+    
+            <form action="/login" class="loginForm">
+                <div>
+                    <label for="email"><i class="fa-solid fa-envelope"></i> Identifiant:<span>*</span></label>
+                    <input type="text" placeholder="Entrez votre Email" name="email" id="email" aria-label="champs obligatoire" required>
+                </div>
+                <div class="email error"></div>
+                <div>
+                    <label for="psw"><i class="fa-solid fa-lock"></i> Mots de passe:<span>*</span></label>
+                    <input type="password" placeholder="Mots de passe" name="password" id="psw" aria-label="champs obligatoire" required>
+                </div>
+                <div class="password error"></div>
+                <div class="checkbox">
+                    <input type="checkbox" name="checkbox" id="checkbox">
+                    <label class="checkbox-label" for="checkbox"> Se souvenir de moi</label>
+                </div>
+                <div class="button">
+                    <button type="submit" class="button">Connexion</button>
+                </div>
+            </form>
+    
+            <a href="#">Vous avez oublié votre mot de passe?</a>
+            <h3>Nouveau Utilisateur</h3>
+            <p>Vous pouvez stocker des adresses, suivre aisément vos commandes et sauvegarder les articles de votre panier.</p>
+            <div class="create-account-link">
+                <a href="/signup">Créer un compte</a>
+            </div>
+        </div>
+    </section>
+    <script src="/js/login.js" type="text/javascript"> </script>
+    
+<%- include('../includes/_footer') -%>
+
+
+

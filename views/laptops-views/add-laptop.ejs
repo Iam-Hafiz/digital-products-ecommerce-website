@@ -1,0 +1,63 @@
+
+<%- include('../includes/_header') -%>
+    <div class="userform">
+        <div class="add_laptop_wrapper">
+            <h3>Veuillez remplir ce formulaire pour ajouter un nouvel ordinateur portable</h3>
+            <p>Les champs obligatoires sont suivis de *.</p>
+            <form  method="post" encType="multipart/form-data" action="/add-laptop">
+                <div>
+                    <label for="title">Titre ou marque<span>*</span></label>
+                    <input id="title" type="text" name="title" aria-label="champs obligatoire" required>
+                </div>
+                <div>
+                    <label for="image">Image<span>*</span></label>
+                    <input type="file" id="image" name="image" accept=".jpg, .jpeg, .png, .webp" aria-label="champs obligatoire" required>
+                </div>
+                <div>
+                    <label for="cpu">CPU<span>*</span></label>
+                    <input id="cpu" type="text" name="cpu" aria-label="champs obligatoire" required>
+                </div>
+                <div>
+                    <label for="os">Systeme d'exploitation</label>
+                    <input id="os" type="text" name="os">
+                </div>
+                <div>
+                    <label for="ram">Mémoire RAM</label>
+                    <input id="ram" type="text" name="ram">
+                </div>
+                <div>
+                    <label for="ssd">Disque dur</label>
+                    <input id="ssd" type="text" name="ssd" >
+                </div>
+                <div>
+                    <label for="gpu">Carte graphique</label>
+                    <input id="gpu" type="text" name="gpu">
+                </div>
+                <div>
+                    <label for="battery">Batterie</label>
+                    <input id="battery" type="text" name="battery">
+                </div>
+                <div>
+                    <label for="guarantee">Garantie</label>
+                    <input id="guarantee" type="text" name="guarantee">
+                </div>
+                <div>
+                    <label for="other">Autre</label>
+                 <input id="other" type="text" name="other">
+                </div>
+                <div>
+                    <label for="price">Prix en €<span>*</span></label>
+                    <input id="price" type="number" name="price" aria-label="champs obligatoire" required>
+                </div>
+                <div>
+                    <label for="quantity">quantité</label>
+                    <input id="quantity" type="number" name="quantity">
+                 </div>
+                <div class="button">
+                    <button type="submit">Ajouter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+<%- include('../includes/_footer') -%>
+

@@ -1,0 +1,33 @@
+
+<% if(monitors.length > 0) { %>
+    <% monitors.forEach((monitor) => {  %>
+        <div class="product_specifications" aria-label="ordinateurs portables">
+            <h3><%= monitor.title %></h3>
+            <a href="/monitor/details/<%= monitor._id %>" class="img_wrapper" tabindex="-1"><img src="../images/monitors/<%= monitor.image %>" alt="thinkPad gen 1 image" tabindex="0"></a>
+            <ul>
+                <% monitor.description.forEach( element => { %>
+                        <li> <%= element %> </li>
+                <% }); %>
+            </ul>
+            <div class="toggle_btn" role="button" tabindex="0">
+                <span class="toggle_text">Afficher les spécifications complètes</span>
+                <span><i class="fa-solid fa-angle-down"></i></span>
+            </div>
+            <div class="more-details-link-wrapper">
+                <a class= "more-details-link" href="/monitor/details/<%= monitor._id %>">En Savoir Plus</a>
+            </div>
+            <div> <%= monitor.price %></div>
+            <div>Code de réduction: SPRING</div>
+            <div class="button">
+                <button>Ajouter Au Panier</button>
+            </div>
+        </div>
+    <% }) %>
+<% } else {%>
+    <p>Les ordinateurs tout en un serons disponibles prochainement</p>
+<% } %>
+
+
+
+
+

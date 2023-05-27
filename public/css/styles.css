@@ -15,6 +15,7 @@
 
 /* main *********************************************/
     --cursor: pointer;
+    --border-blue-focus: 2px solid rgb(0, 0, 255);
 
     /* button variables *****************************/
     /** hover vars **/
@@ -108,21 +109,10 @@ a {
     border-radius: var(--border-radius);
 }
 
-a:focus {
-    background-color: var(--bg-color-focus);
-    color: var(--text-color);
-}
-
-.img_wrapper:focus {
-    background-color: rgb(255, 255, 255);
-}
-
-a:focus > img {
-    border: 2px solid blue;
-}
-
-img:hover {
-    border: 2px solid rgb(0, 0, 255);
+a:focus,
+img:hover,
+img:focus {
+    border: var(--border-blue-focus);
     border-radius: var(--border-radius);
 }
 
@@ -267,6 +257,11 @@ header li {
 .more-details-link-wrapper {
     margin: 0.3rem;
 }
+
+.more-details-link {
+   color: rgb(0, 0, 255);
+}
+
 .more-details-link:hover,
 .deleteLaptopLink:hover {
     color: rgb(0,0,255);
@@ -302,14 +297,19 @@ button:active {
     background-color: var(--bg-color-active);
 }
 
-.toggle_btn:focus,
 button:focus {
-    background-color: var(--bg-color-focus);
     color: var(--text-color);
+    border: var(--border-blue-focus);
+    background-color: rgb(0, 0, 255);
 }
 
 .toggle_btn:focus {
+    border: var(--border-blue-focus);
     border-radius: var(--border-radius);
+}
+
+.toggle_btn:hover {
+    border: var(--border-blue-focus);
 }
 
 /*** return to home page link **/

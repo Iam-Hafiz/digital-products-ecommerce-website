@@ -2,8 +2,9 @@
 <% if(laptops.length > 0) { %>
     <% laptops.forEach((laptop) => {  %>
         <div class="product_specifications" aria-label="ordinateurs portables">
-            <h3><%= laptop.title %></h3>
-            <a href="laptop/<%= laptop._id %>" class="img_wrapper" tabindex="-1"><img src="../images/laptops/<%= laptop.image %>" alt="thinkPad gen 1 image" tabindex="0"></a>
+            <div class="product_Id"><%= laptop._id %></div>
+            <h3 class="product_title"><%= laptop.title %></h3>
+            <a href="laptop/<%= laptop._id %>" class="product_img_wrapper" tabindex="-1"><img src="../images/laptops/<%= laptop.image %>" alt="thinkPad gen 1 image" tabindex="0"></a>
             <ul>
                 <% laptop.description.forEach( element => { %>
                         <li> <%= element %> </li>
@@ -16,7 +17,7 @@
             <div class="more-details-link-wrapper">
                 <a class= "more-details-link" href="/laptop/<%= laptop._id %>">En Savoir Plus</a>
             </div>
-            <div> <%= laptop.price %>,00 €</div>
+            <div class="product_price"> <%= laptop.price %>,00 €</div>
             <div>Code de réduction: SPRING</div>
             <div class="button addToCart">
                 <button>Ajouter Au Panier</button>

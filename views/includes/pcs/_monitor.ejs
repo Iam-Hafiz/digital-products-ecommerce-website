@@ -16,15 +16,16 @@
             <div class="more-details-link-wrapper">
                 <a class= "more-details-link" href="/monitor/details/<%= monitor._id %>">En Savoir Plus</a>
             </div>
-            <div> <%= monitor.price %></div>
+            <div> <%= monitor.price %> ,00 €</div>
             <div>Code de réduction: SPRING</div>
+            <div class="product_unavailable"><i class="fa-solid fa-circle-xmark" style="color: #ff0000;"></i> Indisponible</div>
             <div class="button">
                 <button>Ajouter Au Panier</button>
             </div>
         </div>
     <% }) %>
 <% } else {%>
-    <p>Les ordinateurs tout en un serons disponibles prochainement</p>
+    <p>Les moniteurs serons disponibles prochainement</p>
 <% } %>
 
 

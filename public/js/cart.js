@@ -136,9 +136,6 @@ function displayCart() {
         <div class="cart_total">
             <span class="other_header">Prix Total: </span>
             <span class="other_header total"> ${total},00 €</span>
-        </div>
-        <div class="cart_btn">
-            <button>Commander</button>
         </div>`;
     }
 }
@@ -160,7 +157,7 @@ for (let i =0; i < deleteButtons.length; i++) {
 
         // get item's price and in cart quantity before delete
         Object.values(cartItems).forEach(element => {
-            if(element._id === itemsInLocalStorge[i]) {
+            if(element._id == itemsInLocalStorge[i]) {
                 price = element.price;
                 inCart = element.productsInCart;
             }
@@ -169,7 +166,7 @@ for (let i =0; i < deleteButtons.length; i++) {
         const productsQty = parseInt(window.localStorage.getItem('productsQty'))
 
         // delete item also in local storge 
-        if(itemsInLocalStorge.length === 1){
+        if(itemsInLocalStorge.length == 1){
             window.localStorage.removeItem('productsQty')
             document.querySelector('.productsQty').textContent = '';
             document.querySelector('.mobile_productsQty').textContent = '';
@@ -185,7 +182,7 @@ for (let i =0; i < deleteButtons.length; i++) {
             document.querySelector('.mobile_productsQty').textContent = productsQty - inCart;
 
             // recalculate the total price and save to local storge
-            window.localStorage.setItem('totalPrice', (total - inCart * price))
+            window.localStorage.setItem('totalPrice', (total - (inCart * price)))
             // update total price of the cart page
             document.querySelector('.cart_total .total').textContent = ((total - (inCart * price )) + ',00 €');
 

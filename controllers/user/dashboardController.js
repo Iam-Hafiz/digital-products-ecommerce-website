@@ -1,8 +1,11 @@
 const { User } = require("../../model/userModel")
+const { Order } = require("../../model/orderModel")
 const { Laptop } = require("../../model/laptopModel")
+const jwt = require('jsonwebtoken');
+const dotenv = require("dotenv").config();
 
 const user_dashboard_get = (req, res) => {
-    res.render('users-views/user-dashboard', {title: 'Mon compte'} )
+    res.render('users-views/user-dashboard', { title : 'Mon compte'})
 }
 
 const admin_panel_get = async (req, res) => {

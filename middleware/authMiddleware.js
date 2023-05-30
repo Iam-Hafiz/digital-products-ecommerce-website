@@ -1,3 +1,4 @@
+const express = require('express');
 const jwt = require('jsonwebtoken');
 const { User } = require("../model/userModel");
 const dotenv = require("dotenv").config();
@@ -53,7 +54,7 @@ const require_admin_auth = (req, res, next) => {
 
 // check if the current user is loged in, display his name in the header
 const checkUser = (req, res, next) => {
-  const token = req.cookies.jwtCookie;
+ const token = req.cookies.jwtCookie;
   if (token) {
     jwt.verify(token, process.env.jwt_secret, async (err, decodedToken) => {
       if (err) {

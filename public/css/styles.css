@@ -273,6 +273,30 @@ header li {
     color: rgb(0,0,255);
 }
 
+/*product availability*********************************************/
+
+.product_available {
+    color: rgb( 46, 204, 113 );
+    font-weight: bold;
+}
+
+.product_unavailable {
+    color: rgb(255, 0, 0);
+    font-weight: bold;
+}
+
+/** order *********************************************************/
+
+.order_message_succeed {
+    color:  rgb( 46, 204, 113 );
+    font-weight: bold;
+}
+
+.order_message_fail {
+    color: rgb(255, 0, 0);
+    font-weight: bold;
+}
+
 /** all buttons styling ******************************************/
 button,
 .create-account-link {
@@ -288,6 +312,7 @@ button,
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 0.3rem;
 }
 
 .button button {

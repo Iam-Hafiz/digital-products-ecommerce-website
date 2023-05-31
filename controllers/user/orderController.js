@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 const dotenv = require("dotenv").config();
 
 const Save_order = (req, res) => {
-    //console.log('the req', req.body)
     let getUserId = null
    // const { products, totalPrice, totalProducts } = req.body;
     const token = req.cookies.jwtCookie;

@@ -144,9 +144,8 @@ displayCart();
 // delete items from cart 
 const deleteButtons = document.querySelectorAll('.delete_cart_item');
 for (let i =0; i < deleteButtons.length; i++) {
-    deleteButtons[i].addEventListener('click', (e) => {
-        // remove product from cart page (html)
-        e.target.parentElement.parentElement.parentElement.remove();
+    const theClickedButton = deleteButtons[i];
+    theClickedButton.addEventListener('click', (e) => {
         const cartItems = JSON.parse(window.localStorage.getItem('productsInLocalStorge'))
         const itemsInLocalStorge = [];
         for (const property in cartItems) {
@@ -157,7 +156,7 @@ for (let i =0; i < deleteButtons.length; i++) {
 
         // get item's price and in cart quantity before delete
         Object.values(cartItems).forEach(element => {
-            if(element._id == itemsInLocalStorge[i]) {
+            if(element._id === itemsInLocalStorge[i]) {
                 price = element.price;
                 inCart = element.productsInCart;
             }
@@ -166,16 +165,17 @@ for (let i =0; i < deleteButtons.length; i++) {
         const productsQty = parseInt(window.localStorage.getItem('productsQty'))
 
         // delete item also in local storge 
-        if(itemsInLocalStorge.length == 1){
-            window.localStorage.removeItem('productsQty')
+        if(itemsInLocalStorge.length === 1){
+            localStorage.clear();
+            //window.localStorage.removeItem('productsQty')
             document.querySelector('.productsQty').textContent = '';
             document.querySelector('.mobile_productsQty').textContent = '';
-
-            window.localStorage.removeItem('productsInLocalStorge')
-            window.localStorage.removeItem('totalPrice')
+            //window.localStorage.removeItem('productsInLocalStorge')
+            //window.localStorage.removeItem('totalPrice')
 
             // update total price of the cart page
             document.querySelector('.cart_total .total').textContent = '';
+            document.getElementById('order_form_id').innerHTML = '';
         } else {
             window.localStorage.setItem('productsQty', productsQty - inCart);
             document.querySelector('.productsQty').textContent = productsQty - inCart;
@@ -190,6 +190,8 @@ for (let i =0; i < deleteButtons.length; i++) {
             delete cartItems[itemsInLocalStorge[i]];
             window.localStorage.setItem('productsInLocalStorge', JSON.stringify(cartItems));
         }
+            // remove product from cart page (html)
+            e.target.parentElement.parentElement.parentElement.remove();
     })
 }
 

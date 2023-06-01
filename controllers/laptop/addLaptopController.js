@@ -7,7 +7,7 @@ const getLaptopForm = (req, res) => {
 
 // add a laptop to database
 const addLaptop_post = (req, res) => {
-    console.log(req.body)
+    //console.log(req.body)
     // Get image file object
     const imageFile = req.files.image;
 

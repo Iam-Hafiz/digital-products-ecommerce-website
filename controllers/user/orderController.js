@@ -6,13 +6,13 @@ const dotenv = require("dotenv").config();
 
 const Save_order = async (req, res) => {
     var getUserId = null;
-   //console.log(req.body)
+   //console.log( req.cookies.jwtCookie)
     const token = req.cookies.jwtCookie;
     jwt.verify(token, process.env.jwt_secret, (err, decodedToken) => {
         if(err){
             console.log(err)
         } else {
-            getUserId = decodedToken.id;
+            getUserId = decodedToken.id
         }
         //console.log('tocken content is :', decodedToken);
     });
@@ -28,6 +28,8 @@ const Save_order = async (req, res) => {
         for (let i = 0; i < quantity.length; i++ ) {
             if(ObjectId.isValid(productId[i])){
                 products.push({ productId: productId[i], quantity: quantity[i], title: title[i] })
+            }  else {
+                res.status(500).json({error: 'ID Invalid'})
             }
         }
 
@@ -50,24 +52,28 @@ const Save_order = async (req, res) => {
             })
         }
     } else {
-        if(getUserId && productId && quantity && title && totalPrice && totalProducts){
-            products = [{productId, quantity, title }];
-            const order = new Order({
-                userId: getUserId,
-                products: products,
-                totalProducts: totalProducts,
-                totalPrice: totalPrice,
-            })
-            order.save()
-            .then(result => {
-                res.render('users-views/order', { order: true, title: 'Commande'})
-            })
-            .catch((err) => {
-                console.log(err)
+        if(ObjectId.isValid(productId)){
+            if(getUserId && productId && quantity && title && totalPrice && totalProducts){
+                products = [{productId, quantity, title }];
+                const order = new Order({
+                    userId: getUserId,
+                    products: products,
+                    totalProducts: totalProducts,
+                    totalPrice: totalPrice,
+                })
+                order.save()
+                .then(result => {
+                    res.render('users-views/order', { order: true, title: 'Commande'})
+                })
+                .catch((err) => {
+                    console.log(err)
+                    res.render('users-views/order', { order: false, title: 'Commande'})
+                })
+            } else {
                 res.render('users-views/order', { order: false, title: 'Commande'})
-            })
-        } else {
-            res.render('users-views/order', { order: false, title: 'Commande'}) 
+            }
+        }else {
+            res.status(500).json({error: 'ID Invalid'})
         }
     }
 }

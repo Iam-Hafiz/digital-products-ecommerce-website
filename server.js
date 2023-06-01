@@ -23,11 +23,6 @@ const productsRoutes = require("./routes/productsRoutes")
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// parse application/x-www-form-urlencoded
-//app.use(bodyParser.urlencoded({ extended: false }))
-// parse application/json
-//app.use(bodyParser.json())
-
 // Middleware for post requests to accept form data from the user
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json());
@@ -70,6 +65,9 @@ app.use(productsRoutes);
 app.use((req, res) => {
     res.status(404).render('main-views/html404', { title: 'Not found 404'});
 });
+
+
+
 
 
 // anothor way to Connect to database server mangodb

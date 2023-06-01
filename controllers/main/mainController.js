@@ -10,6 +10,7 @@ const home = async (req, res) => {
     }
     catch(err){
         console.log(err)
+        res.send('<p>Une error s\'est produit, veuillez réessayer ultérieurement </p>');
     }
 }
 

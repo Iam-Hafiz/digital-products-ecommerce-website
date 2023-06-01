@@ -7,7 +7,10 @@ const allinOnePage = (req, res) => {
     .then(allinOnes => {
         res.render('allinOne-views/allinOne', { title: 'Tout en un', allinOnes});
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+        console.log(err)
+        res.redirect('/');
+    })
 }
 
 // single laptop details
@@ -18,7 +21,12 @@ const allinOneDetails = (req, res) => {
         .then(allinOne => {
             res.render('allinOne-views/allinOne-details', { title: 'détails Tout en un', allinOne});
         })
-        .catch(err => console.log(err))       
+        .catch(err => {
+            console.log(err)
+            res.redirect('/');
+        })
+    } else {
+        res.status(500).json({error: 'ID Invalid'})
     }
 }
 

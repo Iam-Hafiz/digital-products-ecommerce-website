@@ -224,12 +224,6 @@ header li {
 ** main **
 *******************************************************************************/
 
-/* hide product id */
-.product_Id {
-    height: 0;
-    overflow: hidden;
-}
-
 .container ul {
     list-style-type: disc;
     padding-left: 1.5rem;

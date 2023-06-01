@@ -19,6 +19,8 @@ const monitorDetails = (req, res) => {
             res.render('monitor-views/monitor-details', { title: 'détails d\'Ecrans', monitor});
         })
         .catch(err => console.log(err))        
+    } else {
+        res.status(500).json({error: 'ID Invalid'})
     }
 }
 

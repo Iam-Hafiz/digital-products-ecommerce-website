@@ -10,9 +10,13 @@ const updateLaptop_get = (req, res) => {
         })
         .catch(err => {
             console.log(err)
+            res.redirect('/');
         })
+    } else {
+        res.status(500).json({error: 'ID Invalid'})
     }
 }
+
 const updateLaptop_post = (req, res) => {
     const id = req.params.id
     if(ObjectId.isValid(id)){
@@ -38,15 +42,14 @@ const updateLaptop_post = (req, res) => {
                 })
                 })
                 .catch(err => {
-                console.log('Could not update the doc or render the file')
-                console.log(err)
+                    console.log('Could not update the doc or render the file', err)
                 })
             }
             // If new file, upload file and replace old file
             if (req.files) {
                 // Get image file object
                 const imageFile = req.files.image;
-    
+
                 // Upload new file
                 imageFile.mv('./public/images/laptops/' + imageFile.name, (err) => {
                     if (err) {
@@ -57,8 +60,7 @@ const updateLaptop_post = (req, res) => {
                 // Remove old file
                 fileSystem.unlink('./public/images/laptops/' + laptop.image, (err) => {
                     if (err) {
-                        console.log('fail to delete the old file stored on the server')
-                        console.error(err);
+                        console.log('fail to delete the old file stored on the server', err)
                     }
                 });
                 // Update laptop document
@@ -69,9 +71,10 @@ const updateLaptop_post = (req, res) => {
             }
         })
         .catch(err => {
-            console.log('Could not find a laptop')
-            console.log(err)
+            console.log('Could not find a laptop', err)
         })
+    } else {
+        res.status(500).json({error: 'ID Invalid'})
     }
 }
 

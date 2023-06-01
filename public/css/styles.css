@@ -287,6 +287,12 @@ header li {
 
 /** order *********************************************************/
 
+#order_form_inputs_wrapper {
+    height: 0;
+    overflow: hidden;
+    display: none;
+}
+
 .order_message_succeed {
     color:  rgb( 46, 204, 113 );
     font-weight: bold;
@@ -740,7 +746,7 @@ footer input[type="submit"] {
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
     }
-    
+
     .cart_btn {
         display: flex;
         justify-content: space-around;
@@ -845,7 +851,7 @@ footer input[type="submit"] {
 
     /* shoping cart ************************************************/
     /* shopping cart products quantity link to cart.js file*/
-    
+
     .productsQty {
         display: inline-block;
         background-color: rgb( 195, 34, 0);

@@ -1,31 +1,74 @@
 const { Order } = require("../../model/orderModel")
+const { Laptop } = require("../../model/laptopModel")
+const { ObjectId } = require('mongodb')
 const jwt = require('jsonwebtoken');
 const dotenv = require("dotenv").config();
 
-const Save_order = (req, res) => {
-    let getUserId = null
-   // const { products, totalPrice, totalProducts } = req.body;
+const Save_order = async (req, res) => {
+    var getUserId = null;
+   //console.log(req.body)
     const token = req.cookies.jwtCookie;
     jwt.verify(token, process.env.jwt_secret, (err, decodedToken) => {
-        //console.log('tocken content is :', decodedToken);
-        getUserId = decodedToken.id;
-    });
-    //console.log(getUserId)
-    if(getUserId){
-        const order = new Order({
-            userId: getUserId,
-            products: req.body.products,
-            totalProducts: req.body.totalProducts,
-            totalPrice: req.body.totalPrice,
-        })
-        order.save()
-        .then(result => {
-            res.status(201).json({ order: true });
-        })
-        .catch((err) => {
+        if(err){
             console.log(err)
-            res.status(400).json({ orderFailed: true, error: err });
-        })
+        } else {
+            getUserId = decodedToken.id;
+        }
+        //console.log('tocken content is :', decodedToken);
+    });
+
+    const productId = req.body.productId
+    const quantity = req.body.productsInCart
+    const title = req.body.title
+    const totalProducts = req.body.totalProducts
+    const totalPrice = req.body.totalPrice
+
+    if(productId && quantity && title && productId.length === quantity.length && quantity.length === title.length) {
+        var products = [];
+        for (let i = 0; i < quantity.length; i++ ) {
+            if(ObjectId.isValid(productId[i])){
+                products.push({ productId: productId[i], quantity: quantity[i], title: title[i] })
+            }
+        }
+
+        //console.log('products are:', products)
+        if(getUserId){
+            //console.log('user id is :', getUserId)
+            const order = new Order({
+                userId: getUserId,
+                products: products,
+                totalProducts: totalProducts,
+                totalPrice: totalPrice,
+            })
+            order.save()
+            .then(result => {
+                res.render('users-views/order', { order: true, title: 'Commande'})
+            })
+            .catch((err) => {
+                console.log(err)
+                res.render('users-views/order', { order: false, title: 'Commande'})
+            })
+        }
+    } else {
+        if(getUserId && productId && quantity && title && totalPrice && totalProducts){
+            products = [{productId, quantity, title }];
+            const order = new Order({
+                userId: getUserId,
+                products: products,
+                totalProducts: totalProducts,
+                totalPrice: totalPrice,
+            })
+            order.save()
+            .then(result => {
+                res.render('users-views/order', { order: true, title: 'Commande'})
+            })
+            .catch((err) => {
+                console.log(err)
+                res.render('users-views/order', { order: false, title: 'Commande'})
+            })
+        } else {
+            res.render('users-views/order', { order: false, title: 'Commande'}) 
+        }
     }
 }
 

@@ -1,4 +1,5 @@
 const { Monitor } = require("../../model/laptopModel")
+const { ObjectId } = require('mongodb')
 
 // all  monitors page
 const monitorPage = (req, res) => {
@@ -12,11 +13,13 @@ const monitorPage = (req, res) => {
 // single monitor details
 const monitorDetails = (req, res) => {
     const id = req.params.id
-    Monitor.findOne({_id: id})
-    .then(monitor => {
-        res.render('monitor-views/monitor-details', { title: 'détails d\'Ecrans', monitor});
-    })
-    .catch(err => console.log(err))
+    if(ObjectId.isValid(id)){
+        Monitor.findOne({_id: id})
+        .then(monitor => {
+            res.render('monitor-views/monitor-details', { title: 'détails d\'Ecrans', monitor});
+        })
+        .catch(err => console.log(err))        
+    }
 }
 
 module.exports = {

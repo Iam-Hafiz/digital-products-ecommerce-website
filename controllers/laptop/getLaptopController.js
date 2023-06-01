@@ -14,11 +14,13 @@ const laptopsPage = (req, res) => {
 // single laptop details
 const laptopDetails = (req, res) => {
     const id = req.params.id
-    Laptop.findOne({_id: id})
-    .then(laptop => {
-        res.render('laptops-views/laptop-details', { title: 'détails PC portable', laptop});
-    })
-    .catch(err => console.log(err))
+    if(ObjectId.isValid(id)){
+        Laptop.findOne({_id: id})
+        .then(laptop => {
+            res.render('laptops-views/laptop-details', { title: 'détails PC portable', laptop});
+        })
+        .catch(err => console.log(err))
+    }
 }
 
 /***************************************************************************************************

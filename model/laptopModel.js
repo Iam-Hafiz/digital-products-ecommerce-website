@@ -12,7 +12,12 @@ const laptopSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    quantity: Number
+    quantity: Number,
+    productsInCart: {
+        type: Number,
+        default: 0
+    }
+
 }, { timestamps: true });
 // Compile model from schema
 const Laptop = mongoose.model('laptop', laptopSchema);

@@ -4,7 +4,7 @@
         <div class="product_specifications" aria-label="ordinateurs portables">
             <div class="product_Id"><%= laptop._id %></div>
             <h3 class="product_title"><%= laptop.title %></h3>
-            <a href="laptop/<%= laptop._id %>" class="product_img_wrapper" tabindex="-1"><img src="../images/laptops/<%= laptop.image %>" alt="thinkPad gen 1 image" tabindex="0"></a>
+            <a href="laptop/<%= laptop._id %>" class="product_img_wrapper" tabindex="-1"><img src="/images/laptops/<%= laptop.image %>" alt="thinkPad gen 1 image" tabindex="0"></a>
             <ul>
                 <% laptop.description.forEach( element => { %>
                         <li> <%= element %> </li>

@@ -20,6 +20,8 @@ const laptopDetails = (req, res) => {
             res.render('laptops-views/laptop-details', { title: 'détails PC portable', laptop});
         })
         .catch(err => console.log(err))
+    } else {
+        res.status(500).json({error: 'ID Invalid'})
     }
 }
 

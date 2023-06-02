@@ -5,10 +5,11 @@ const newsletter = (req, res) => {
     const newSubscriber = new Subscriber({ firstname, email })
     newSubscriber.save()
     .then((result) => {
-      res.redirect('/');
+        res.redirect('/');
     })
     .catch((err) => {
         console.log(err);
+        res.redirect('/');
     })
 }
 

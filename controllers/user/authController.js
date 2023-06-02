@@ -39,7 +39,7 @@ function handleErrors (err) {
 /********************************************************************************
 // create json web token
 *******************************************************************************/
-const maxAge =  24 * 60 * 60;
+const maxAge = 60 * 60;
 const createToken = (id, isAdmin) => {
   return jwt.sign({ id, isAdmin }, process.env.jwt_secret , {
     expiresIn: maxAge

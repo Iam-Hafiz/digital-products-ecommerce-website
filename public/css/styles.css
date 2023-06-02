@@ -224,12 +224,6 @@ header li {
 ** main **
 *******************************************************************************/
 
-/* hide product id */
-.product_Id {
-    height: 0;
-    overflow: hidden;
-}
-
 .container ul {
     list-style-type: disc;
     padding-left: 1.5rem;
@@ -283,6 +277,20 @@ header li {
 .product_unavailable {
     color: rgb(255, 0, 0);
     font-weight: bold;
+}
+
+/* general shoping cart styling ***************************************/
+.cart_qty .fa-circle-plus,
+.cart_qty .fa-circle-minus {
+    color: var(--btn-bg-color);
+    padding: 0.3rem;
+    font-size: 2.5rem;
+}
+
+.cart_qty .fa-circle-plus:hover,
+.cart_qty .fa-circle-minus:hover {
+    cursor: var(--cursor);
+    color: rgb( 152, 0, 255 );
 }
 
 /** order *********************************************************/

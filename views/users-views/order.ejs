@@ -1,10 +1,10 @@
 <%- include('../includes/_header') -%>
-
+    <div>
         <% if(order){ %>
-            <p class="order_message_succeed"> Votre commande a été envoyer, merci pour votre confiance en DIGITAL PRO </p>
+            <p class="order_message_succeed" id="order_succeed"><%= order %></p>
         <% } else { %>
             <p class="order_message_fail"> Votre commande n\'a pas été enregistrée, Veuillez réessayer </p>
         <% } %>
     </div>
-
+    <script src="/js/shoppingCart/order-saved.js" type="text/javascript"></script>
 <%- include('../includes/_footer') -%>

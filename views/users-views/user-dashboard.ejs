@@ -3,8 +3,35 @@
     <section>
         <h2>Tableau de bord </h2>
         <ul>
-            <li>Mon panier</li>
-            <li>Mes commandes</li>
+            <li><a href="/cart">Mon panier</a></li>
+            <li>
+                <h3>Mes commandes</h3>
+                <% if(orderInfo) { %>
+                    <div class="user_dashboard_orders_wrapper">
+                        <% orderInfo.forEach(order => { %>
+                            <div class="user_dashboard_single_order">
+                                <ul>
+                                    <li> <strong>Date:</strong><%= order.date %></li>
+                                </ul> 
+                                <% order.products.forEach(product => { %>
+                                    <div class="order_details_inner_list">
+                                        <ul>
+                                            <img src="/images/laptops/<%= product.image %>" alt="thinkPad gen 1 image" ></img>
+                                            <li> <strong>ID: </strong><%= product.productId %></li>
+                                            <li> <strong>Produit:</strong> <%= product.title %></li>
+                                            <li><strong>quantité:</strong> <%= product.quantity %></li>
+                                            <li><strong>Prix:</strong> <%= product.quantity * product.price %>,00€</li>
+                                        </ul>
+                                    </div>
+                                <% }) %>
+                                <ul>
+                                    <li><strong>Prix Total: <%= order.totalPrice %>,00€</strong></li>
+                                </ul>
+                            </div>
+                        <% }) %>
+                    </div>
+                <% } %>
+            </li>
             <li>Centre de messagerie</li>
             <li>Mes bons de réduction</li>
         </ul>

@@ -6,26 +6,26 @@
         <p>* Signale un champ obligatoire</p>
         <form action="/signup" class="signupForm">
             <div>
-                <label for="lname">Nom<span>*</span></label>
-                <input id="lname" type="text" name="lname" placeholder="entrez votre nom" minlength="1" maxlength="20" aria-label="champs obligatoire" required>
+                <label for="user_lname">Nom<span>*</span></label>
+                <input id="user_lname" type="text" name="lname" placeholder="entrez votre nom" minlength="1" maxlength="20" aria-label="champs obligatoire" required>
             </div>
             <div>
-                <label for="fname">Prénom<span>*</span></label>
-                <input id="fname" type="text" name="fname" minlength="1" maxlength="20" aria-label="champs obligatoire" required>
+                <label for="user_fname">Prénom<span>*</span></label>
+                <input id="user_fname" type="text" name="fname" minlength="1" maxlength="20" aria-label="champs obligatoire" required>
             </div>
             <div>
                 <label for="birthday"><i class="fa-solid fa-cake-candles"></i> Date de naissance</label>
                 <input id="birthday" type="date" name="birthday" value="2023-04-06">
             </div>
             <div>
-                <label for="email"><i class="fa-solid fa-envelope"></i> Email<span>*</span></label>
-                <input type="email" placeholder="Entrez votre Email" name="email" id="email" aria-label="champs obligatoire" required>
+                <label for="user_email"><i class="fa-solid fa-envelope"></i> Email<span>*</span></label>
+                <input type="email" placeholder="Entrez votre Email" name="email" id="user_email" aria-label="champs obligatoire" required>
             </div>
 
             <div class="emailError"></div>
             <div>
-                <label for="psw"><i class="fa-solid fa-lock"></i> Mots de passe<span>*</span></label>
-                <input type="password" placeholder="Mots de passe" name="password" id="psw" minlength="8" maxlength="20" aria-label="champs obligatoire" required>
+                <label for="user_psw"><i class="fa-solid fa-lock"></i> Mots de passe<span>*</span></label>
+                <input type="password" placeholder="Mots de passe" name="password" id="user_psw" minlength="8" maxlength="20" aria-label="champs obligatoire" required>
             </div>
             <div class="passwordError"></div>
             <!-- <div>

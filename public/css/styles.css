@@ -26,6 +26,8 @@
     --btn-bg-color: rgb(33, 97, 140);
     --btn-border: 1px solid none;
     --btn-padding: 0.6rem;
+    /* form ***************************************/
+    --bg-color-form-gray: rgb(242, 244, 244);
 /* shopping cart **************************************/
     --border_cart_product: 1px solid rgb(37, 142, 2);
 
@@ -121,7 +123,7 @@ input:focus {
 }
 
 .search-field {
-    border-box: var(--border-radius)
+    border: var(--border-radius)
 }
 
 .nav ul:nth-child(4) a {
@@ -364,14 +366,14 @@ button:focus {
 
 /* form styling ****************************************************/
 form {
-    background-color: rgb(242, 244, 244);
+    background-color: rgb(255, 255, 255);
     border-radius: var(--border-radius);
 }
 
 .userform,
 .login_wrapper,
 .add_laptop_wrapper {
-    background-color: rgb(214, 219, 223);
+    background-color: var(--bg-color-form-gray);
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -448,14 +450,37 @@ input[type="checkbox"] {
   color: rgb(176, 31, 0);
 }
 
-/* espce admin styles */
+/* admin dashboard styles *********************************************/
 .espace_admin > div {
-    background-color: rgb( 242, 244, 244);
+    background-color: var(--bg-color-form-gray);
     padding: 1rem;
     border-radius: var(--border-radius);
 }
 .espace_admin h4 {
     color: var(--bg-color-focus);
+}
+
+/* user dashboard styles *******************************************/
+
+.user_dashboard_orders_wrapper > div:nth-child(odd) {
+    background-color: var(--bg-color-form-gray);
+}
+
+.user_dashboard_orders_wrapper > div:nth-child(even) {
+    background-color: rgb(225, 253, 255);
+}
+
+.user_dashboard_orders_wrapper > div {
+    margin: 1rem;
+    padding: 0.5rem;
+}
+
+.user_dashboard_orders_wrapper li {
+    list-style-type: none;
+}
+
+.user_dashboard_orders_wrapper img {
+    max-width: 5em;
 }
 
 /******************************************************************************
@@ -1002,6 +1027,28 @@ footer input[type="submit"] {
 
     .responsive > div {
         width: 100%;
+    }
+    /*** user dashboard ***************************************************/
+
+    .user_dashboard_single_order > div,
+    .order_details_inner_list ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .user_dashboard_single_order ul:last-child {
+        display: flex;
+        justify-items: center;
+        justify-content: center;
+    }
+
+    .order_details_inner_list ul {
+        margin: 0.5rem;
+    }
+
+    .order_details_inner_list ul li{
+        margin: 1rem;
     }
 
     /* footer ****************************************************/

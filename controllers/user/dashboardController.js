@@ -1,11 +1,42 @@
 const { User } = require("../../model/userModel")
 const { Order } = require("../../model/orderModel")
 const { Laptop } = require("../../model/laptopModel")
+const { ObjectId } = require('mongodb')
 const jwt = require('jsonwebtoken');
 const dotenv = require("dotenv").config();
 
-const user_dashboard_get = (req, res) => {
-    res.render('users-views/user-dashboard', { title : 'Mon compte'})
+const user_dashboard_get = async (req, res) => {
+    let getUserId = null;
+    const token = req.cookies.jwtCookie;
+    jwt.verify(token, process.env.jwt_secret, (err, decodedToken) => {
+        if(err){
+            console.log(err)
+        } else {
+            getUserId = decodedToken.id
+        }
+    });
+    try {
+        if(ObjectId.isValid(getUserId)){
+            const orders = await Order.find({userId: getUserId}).sort({_id: -1})
+            let orderInfo = [];
+            if(orders){
+                orders.forEach(order => {
+                    const date = new Date(`${order.createdAt}`)
+                    const dateFormat = new Intl.DateTimeFormat().format(date)
+                    //console.log('date loock:', new Intl.DateTimeFormat().format(date))
+                    orderInfo.push({ date: `${dateFormat}`, products: order.products, totalPrice: order.totalPrice })
+                })
+                //console.log('here:', orderInfo)
+                res.render('users-views/user-dashboard', { orderInfo, title : 'Mon compte'})  
+            } else {
+                res.render('users-views/user-dashboard', { orderInfo, title : 'Mon compte'})
+            }
+        }  else {
+            res.status(500).json({error: 'ID Invalid'})
+        }
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 const admin_panel_get = async (req, res) => {
@@ -19,7 +50,6 @@ const admin_panel_get = async (req, res) => {
                 }
             ]);
             
-            //console.log(totalPrice)
         const totalLaptops = await Laptop.aggregate([
                 { $match: { price: { $gte: 1600} } },
                 { $project: { _id: 0,  total: { $sum: '$quantity' } } }
@@ -30,7 +60,7 @@ const admin_panel_get = async (req, res) => {
         const countUsers = await User.count({ isAdmin: { $ne: true } } )
         const date = new Date()
         const lastYear = new Date(date.setFullYear(date.getFullYear() - 1))
-        console.log(lastYear)
+        //console.log('last year value:', lastYear)
         const data = await User.aggregate([
                 { $match: { createdAt: { $gte: lastYear } } },
 

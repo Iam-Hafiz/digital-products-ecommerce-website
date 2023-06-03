@@ -6,7 +6,7 @@ const dotenv = require("dotenv").config();
 
 const Save_order = (req, res) => {
     var getUserId = null;
-   //console.log( req.cookies.jwtCookie)
+   //console.log( 'the body is:', req.body)
     const token = req.cookies.jwtCookie;
     jwt.verify(token, process.env.jwt_secret, (err, decodedToken) => {
         if(err){
@@ -20,16 +20,18 @@ const Save_order = (req, res) => {
     const productId = req.body.productId
     const quantity = req.body.productsInCart
     const title = req.body.title
+    const price = req.body.price
+    const image = req.body.image
     const totalProducts = req.body.totalProducts
     const totalPrice = req.body.totalPrice
 
-    if(productId && quantity && title && productId.length === quantity.length && quantity.length === title.length) {
+    if(productId && quantity && title && price && image && productId.length === quantity.length && quantity.length === title.length) {
         var products = [];
         for (let i = 0; i < quantity.length; i++ ) {
             if(ObjectId.isValid(productId[i])){
-                products.push({ productId: productId[i], quantity: quantity[i], title: title[i] })
+                products.push({ productId: productId[i], quantity: quantity[i], title: title[i], price: price[i], image: image[i] })
             }  else {
-                res.status(500).json({error: 'ID Invalid'})
+                res.status(500).json({error: 'products IDs Invalid'})
             }
         }
 
@@ -44,7 +46,7 @@ const Save_order = (req, res) => {
             })
             order.save()
             .then(result => {
-                res.render('users-views/order', { order: true, title: 'Commande'})
+                res.render('users-views/order', { order: 'Votre commande a été envoyer, merci pour votre confiance en DIGITAL PRO', title: 'Commande'})
             })
             .catch((err) => {
                 console.log(err)
@@ -53,8 +55,8 @@ const Save_order = (req, res) => {
         }
     } else {
         if(ObjectId.isValid(productId)){
-            if(getUserId && productId && quantity && title && totalPrice && totalProducts){
-                products = [{productId, quantity, title }];
+            if(getUserId && productId && quantity && title && price && image && totalPrice && totalProducts){
+                products = [{productId, quantity, title, price, image }];
                 const order = new Order({
                     userId: getUserId,
                     products: products,
@@ -63,7 +65,7 @@ const Save_order = (req, res) => {
                 })
                 order.save()
                 .then(result => {
-                    res.render('users-views/order', { order: true, title: 'Commande'})
+                    res.render('users-views/order', { order: 'Votre commande a été envoyer, merci pour votre confiance en DIGITAL PRO', title: 'Commande'})
                 })
                 .catch((err) => {
                     console.log(err)
@@ -73,7 +75,7 @@ const Save_order = (req, res) => {
                 res.render('users-views/order', { order: false, title: 'Commande'})
             }
         }else {
-            res.status(500).json({error: 'ID Invalid'})
+            res.status(500).json({error: 'single product ID Invalid'})
         }
     }
 }

@@ -126,7 +126,14 @@ function displayCart() {
         <div class="cart_total">
             <span class="other_header">Prix Total: </span>
             <span class="other_header total"> ${total},00 €</span>
-        </div>`;
+        </div>
+        <div class="cart_btn" id="cart_btn">
+            <form  method="POST" action="/order" encType="multipart/form-data" id="order_form_id" class="order_form">
+                <div id="order_form_inputs_wrapper"></div>
+                <button class="order_btn">Commander</button>
+            </form>
+        </div>
+        `;
     }
 }
 
@@ -184,80 +191,6 @@ for (let i =0; i < document.querySelectorAll('.delete_cart_item').length; i++) {
     })
 }
 
-
-// add or substract item by 1 from cart plus and minus icons *******************************************************************************************************************
-const cartPlusIcons = document.querySelectorAll('.cart_qty .fa-circle-plus');
-const cartminusIcons = document.querySelectorAll('.cart_qty .fa-circle-minus');
-if(cartPlusIcons || cartminusIcons){
-    for (let i = 0; i < cartPlusIcons.length || i < cartminusIcons.length; i++) {
-        // add item by 1
-        cartPlusIcons[i].addEventListener('click', (e) => {
-            const productsQty = parseInt(window.localStorage.getItem('productsQty'))
-            const cartItems = JSON.parse(window.localStorage.getItem('productsInLocalStorge'))
-            const total = parseInt(window.localStorage.getItem('totalPrice'))
-            let itemsInLocalStorge = [];
-            for (const property in cartItems) {
-              itemsInLocalStorge.push(property);
-            }
-            let price = 0
-            let inCart = 0
-            // get item's price and in cart quantity before delete
-            Object.values(cartItems).forEach(element => {
-                if(element._id === itemsInLocalStorge[i]) {
-                    element.productsInCart += 1;
-                    price = element.price;
-                    inCart = element.productsInCart;
-                }
-            })
-            // increase by 1
-            window.localStorage.setItem('totalPrice', total + price)
-            window.localStorage.setItem('productsInLocalStorge', JSON.stringify(cartItems));
-            window.localStorage.setItem('productsQty', productsQty + 1)
-            document.querySelector('.productsQty').textContent = productsQty + 1;
-            document.querySelector('.mobile_productsQty').textContent = productsQty + 1
-            // update total price of the cart page
-            // total price of the item
-            document.querySelectorAll('.cart_quantity')[i].textContent = inCart * price + ',00 €'
-            document.querySelectorAll('.cart_qty .single_Item_Qty')[i].textContent = inCart;
-            // global total price
-            document.querySelector('.cart_total > .total').textContent = (total + price) + ',00 €';
-        })
-
-        // add item by 1 *****************************************************************
-        cartminusIcons[i].addEventListener('click', (e) => {
-            const productsQty = parseInt(window.localStorage.getItem('productsQty'))
-            const cartItems = JSON.parse(window.localStorage.getItem('productsInLocalStorge'))
-            const total = parseInt(window.localStorage.getItem('totalPrice'))
-            let itemsInLocalStorge = [];
-            for (const property in cartItems) {
-              itemsInLocalStorge.push(property);
-            }
-            let price = 0
-            let inCart = 0
-            // get item's price and in cart quantity before delete
-            Object.values(cartItems).forEach(element => {
-                if(element._id === itemsInLocalStorge[i] && element.productsInCart > 1) {
-                    element.productsInCart -= 1;
-                    price = element.price;
-                    inCart = element.productsInCart;
-
-                    // decrease by 1
-                    window.localStorage.setItem('totalPrice', total - price)
-                    window.localStorage.setItem('productsInLocalStorge', JSON.stringify(cartItems));
-                    window.localStorage.setItem('productsQty', productsQty - 1)
-                    document.querySelector('.productsQty').textContent = productsQty - 1;
-                    document.querySelector('.mobile_productsQty').textContent = productsQty - 1
-                    // update total price of the cart page
-                    // total price of the item
-                    document.querySelectorAll('.cart_quantity')[i].textContent = inCart * price + ',00 €'
-                    document.querySelectorAll('.cart_qty .single_Item_Qty')[i].textContent = inCart;
-                    // global total price
-                    document.querySelector('.cart_total > .total').textContent = (total - price) + ',00 €';
-                }
-            })
-        })
-    }
-}
 
 
 

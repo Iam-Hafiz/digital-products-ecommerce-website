@@ -10,6 +10,7 @@ function handleErrors (err) {
     console.log(err.message, err.code);
     let errors = { email: '', password: '' };
 
+    // sign in possible errors******************************************
     // reasign the incorrect email message
     if (err.message === 'Adresse Email incorrecte') {
       errors.email = 'Cet email n\'est pas enregistré';
@@ -20,6 +21,7 @@ function handleErrors (err) {
       errors.password = 'Ce mot de passe est incorrect';
     }
 
+    // sign up possible errors ****************************************
     // duplicate email error
     if (err.code === 11000) {
       errors.email = 'cet e-mail est déjà enregistré';
@@ -50,7 +52,7 @@ const createToken = (id, isAdmin) => {
 *******************************************************************************/
 
 const login_get = (req, res) => {
-  res.render('users-views/login');
+  res.render('users-views/login', { title: 'Se connecter'} );
 }
 
 const login_post = async (req, res) => {

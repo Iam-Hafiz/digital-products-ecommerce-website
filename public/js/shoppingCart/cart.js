@@ -106,15 +106,15 @@ function displayCart() {
             <div>
                 <div class="cart_product_container">
                     <div class="cart_product product_header">
-                        <button class="delete_cart_item"><i class="fa-solid fa-trash-can"></i></button>
+                        <button class="delete_cart_item" aria-label="supprimer"><i class="fa-solid fa-trash-can"></i></button>
                         <a href="laptop/${item._id}" tabindex="-1"><img src="/images/laptops/${item.image}" alt="image d'un ordinateur portable" tabindex="0"></a>
                         <span class="cart_product_title">${item.title}</span>
                     </div>
                     <div class="cart_price other_header">${item.price},00 €</div>
                     <div class="cart_qty other_header">
-                        <i class="fa-solid fa-circle-minus"></i>
+                        <i class="fa-solid fa-circle-minus" role="button" tabindex="0" aria-label="baisser la quantity"></i>
                         <span class="single_Item_Qty">${item.productsInCart}</span>
-                        <i class="fa-solid fa-circle-plus"></i>
+                        <i class="fa-solid fa-circle-plus" role="button" tabindex="0" aria-label="augmenter la quantity"></i>
                     </div>
                     <div class="cart_quantity other_header">
                         <span>${item.productsInCart * item.price},00 €</span>

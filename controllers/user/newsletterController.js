@@ -9,7 +9,6 @@ const newsletter = (req, res) => {
     })
     .catch((err) => {
         console.log(err);
-        res.redirect('/');
     })
 }
 

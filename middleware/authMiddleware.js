@@ -26,6 +26,7 @@ const require_user_auth = (req, res, next) => {
     res.redirect('/login');
   }
 }
+
 // require admin auth
 const require_admin_auth = (req, res, next) => {
   const token = req.cookies.jwtCookie;

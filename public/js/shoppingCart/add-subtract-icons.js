@@ -83,18 +83,18 @@ if(order_form_id){
     order_form_id.addEventListener("submit", (event) => {
         let order_form = document.getElementById('order_form_inputs_wrapper');
         if(order_form){
-    
             //console.log('event done')
             productsQty = parseInt(window.localStorage.getItem('productsQty'))
             cartItems = JSON.parse(window.localStorage.getItem('productsInLocalStorge'))
             total = parseInt(window.localStorage.getItem('totalPrice'))
             let totalPrice = total;
             let totalProducts = productsQty
-            let productId = null;
-            let quantity = null;
-            let title = null;
-            let price = null;
-            let image = null;
+            //let productId = null;
+            //let quantity = null;
+            //let title = null;
+            //let price = null;
+            //let image = null;
+            //let productType = null;
             if(cartItems){
                 Object.values(cartItems).forEach(product => {
                     order_form.innerHTML += `
@@ -102,7 +102,8 @@ if(order_form_id){
                      <input type="number" name="productsInCart" value=${JSON.stringify(product.productsInCart)}>
                      <input type="text" name="title" value=${JSON.stringify(product.title)}>
                      <input type="number" name="price" value=${JSON.stringify(product.price)}>
-                     <input type="text" name="image" value=${JSON.stringify(product.image)}>`
+                     <input type="text" name="image" value=${JSON.stringify(product.image)}>
+                     <input type="text" name="productType" value=${JSON.stringify(product.productType)}>`
                 });
                 order_form.innerHTML += `<input type="number" name="totalPrice" value=${JSON.stringify(totalPrice)}>
                 <input type="number" name="totalProducts" value=${JSON.stringify(totalProducts)}>`
@@ -111,12 +112,26 @@ if(order_form_id){
     });
 }
 
+// order button animation
+/*function animate_order_btn() {
+    let order_btn = document.querySelector('.order_form .order_btn');
+    let spinIcon = document.querySelector('.order_btn fa-circle-notch');
+    if(order_btn) {
+        order_btn.style.cursor = "wait";
+        order_btn.textContent = "";
+        spinIcon.classList.add("order_btn_spin_icon");
+        setTimeout(() => {
+            order_btn.style.pointerEvents = "none";
+            order_btn.textContent = "";
+            //spinIcon[i].classList.replace("spin_icon", "checked_icon");
+            //spinIcon[i].classList.replace("fa-spinner", "fa-check");
+            order_btn.textContent = "Bien ajouté";
+        }, 1000); //1s = 1000ms
+    }
+}*/
 
 
-
-
-
-
+// another way to send a post request
 /*
 if(document.querySelector('#order_form_id')){
 document.querySelector('#order_form_id').addEventListener('submit', async (event) => {

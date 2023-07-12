@@ -1,5 +1,4 @@
 const { Order } = require("../../model/orderModel")
-const { Laptop } = require("../../model/laptopModel")
 const { ObjectId } = require('mongodb')
 const jwt = require('jsonwebtoken');
 const dotenv = require("dotenv").config();
@@ -22,14 +21,16 @@ const Save_order = (req, res) => {
     const title = req.body.title
     const price = req.body.price
     const image = req.body.image
+    const productType = req.body.productType
     const totalProducts = req.body.totalProducts
     const totalPrice = req.body.totalPrice
+    let products = [];
 
-    if(productId && quantity && title && price && image && productId.length === quantity.length && quantity.length === title.length) {
-        var products = [];
+    if(productId && quantity && title && price && image && productType && productId.length === quantity.length && quantity.length === title.length) {
         for (let i = 0; i < quantity.length; i++ ) {
             if(ObjectId.isValid(productId[i])){
-                products.push({ productId: productId[i], quantity: quantity[i], title: title[i], price: price[i], image: image[i] })
+                products.push({ productId: productId[i], quantity: quantity[i], title: title[i],
+                                 price: price[i], image: image[i], productType: productType[i] });
             }  else {
                 res.status(500).json({error: 'products IDs Invalid'})
             }
@@ -55,8 +56,8 @@ const Save_order = (req, res) => {
         }
     } else {
         if(ObjectId.isValid(productId)){
-            if(getUserId && productId && quantity && title && price && image && totalPrice && totalProducts){
-                products = [{productId, quantity, title, price, image }];
+            if(getUserId && productId && quantity && title && price && image && productType && totalPrice && totalProducts){
+                products = [{productId, quantity, title, price, image, productType }];
                 const order = new Order({
                     userId: getUserId,
                     products: products,
@@ -75,7 +76,7 @@ const Save_order = (req, res) => {
                 res.render('users-views/order', { order: false, title: 'Commande'})
             }
         }else {
-            res.status(500).json({error: 'single product ID Invalid'})
+            res.status(500).json({error: 'single product ID Invalid !'})
         }
     }
 }

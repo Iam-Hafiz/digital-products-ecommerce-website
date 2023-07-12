@@ -1,6 +1,6 @@
 <%- include('../includes/_header') -%>
 
-    <section>
+    <section class="section_bg">
         <h2>Tableau de bord </h2>
         <ul>
             <li><a href="/cart">Mon panier</a></li>
@@ -16,7 +16,7 @@
                                 <% order.products.forEach(product => { %>
                                     <div class="order_details_inner_list">
                                         <ul>
-                                            <img src="/images/laptops/<%= product.image %>" alt="thinkPad gen 1 image" ></img>
+                                            <img src="/images/<%= product.productType + 's' %>/<%= product.image %>" alt="thinkPad gen 1 image" ></img>
                                             <li> <strong>ID: </strong><%= product.productId %></li>
                                             <li> <strong>Produit:</strong> <%= product.title %></li>
                                             <li><strong>quantité:</strong> <%= product.quantity %></li>

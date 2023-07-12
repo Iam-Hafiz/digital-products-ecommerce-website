@@ -1,0 +1,39 @@
+
+<%- include('../includes/_header') -%>
+    <div class="userform">
+        <div class="add_laptop_wrapper">
+            <h3>Veuillez remplir ce formulaire pour ajouter des accessories</h3>
+            <p>Les champs obligatoires sont suivis de *.</p>
+            <form  method="post" encType="multipart/form-data" action="/add-accessories">
+                <div>
+                    <label for="accessoriesTitle">Titre ou marque<span>*</span></label>
+                    <input id="accessoriesTitle" type="text" name="title" aria-label="champs obligatoire" required>
+                </div>
+                <div class="product_Type">
+                    <label for="accessories_productType">Type<span>*</span></label>
+                    <input type="text" id="accessories_productType" name="productType" value="accessories" aria-label="champs obligatoire">
+                </div>
+                <div>
+                    <label for="accessories-image">Image<span>*</span></label>
+                    <input type="file" id="accessories-image" name="image" accept=".svg, .jpg, .jpeg, .png, .webp" aria-label="champs obligatoire" required>
+                </div>
+                <div>
+                    <label for="accessories-other">Description separée par ",":</label>
+                    <textarea id="accessories-other" name="description"  rows="10" cols="33"> </textarea>
+                </div>
+                <div>
+                    <label for="accessories-price">Prix en €<span>*</span></label>
+                    <input id="accessories-price" type="number" name="price" aria-label="champs obligatoire" required>
+                </div>
+                <div>
+                    <label for="accessories-quantity">quantité</label>
+                    <input id="accessories-quantity" type="number" name="quantity">
+                 </div>
+                <div class="button">
+                    <button type="submit">Ajouter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+<%- include('../includes/_footer') -%>
+

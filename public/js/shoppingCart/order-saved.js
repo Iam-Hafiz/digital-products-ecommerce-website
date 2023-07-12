@@ -9,7 +9,9 @@ if(order_message_succeed){
         document.querySelector('.productsQty').textContent = '';
         document.querySelector('.mobile_productsQty').textContent = '';
         window.setTimeout(() => {
-           window.location.assign('/user-dashboard');
-        }, 1500)
+           window.location.assign('/');
+        }, 3000)
     }
 }
+
+

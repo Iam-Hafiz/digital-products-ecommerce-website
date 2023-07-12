@@ -2,25 +2,26 @@
 <% if(monitors.length > 0) { %>
     <% monitors.forEach((monitor) => {  %>
         <div class="product_specifications" aria-label="ordinateurs portables">
-            <h3><%= monitor.title %></h3>
+            <h3 class="product_title"><%= monitor.title %></h3>
             <a href="/monitor/details/<%= monitor._id %>" class="img_wrapper" tabindex="-1"><img src="../images/monitors/<%= monitor.image %>" alt="thinkPad gen 1 image" tabindex="0"></a>
-            <ul>
+            <ul class="product_description_ul">
                 <% monitor.description.forEach( element => { %>
                         <li> <%= element %> </li>
                 <% }); %>
             </ul>
             <div class="toggle_btn" role="button" tabindex="0">
                 <span class="toggle_text">Afficher les spécifications complètes</span>
-                <span><i class="fa-solid fa-angle-down"></i></span>
+                <span><i class="fa-solid fa-angle-down fa-beat"></i></span>
             </div>
             <div class="more-details-link-wrapper">
                 <a class= "more-details-link" href="/monitor/details/<%= monitor._id %>">En Savoir Plus</a>
             </div>
-            <div> <%= monitor.price %> ,00 €</div>
+            <div> <%= monitor.price %>,00 €</div>
             <div>Code de réduction: SPRING</div>
-            <div class="product_unavailable"><i class="fa-solid fa-circle-xmark" style="color: #ff0000;"></i> Indisponible</div>
-            <div class="button">
-                <button>Ajouter Au Panier</button>
+            <div class="product_available"><i class="fa-solid fa-circle-check" style="color: rgb(0, 90, 0);"></i> disponible</div>
+            <input type="text" value="<%= monitor._id %>" class="product_id">
+            <div class="button addToCart" role="button" aria-label="ajouter au panier">
+                <button class='addToCart_btn'> <i class="fa-solid fa-spinner cart_btn_icons"></i> <span>Ajouter Au Panier</span></button>
             </div>
         </div>
     <% }) %>

@@ -1,0 +1,60 @@
+
+<%- include('../includes/_header') -%>
+    <div class="userform">
+        <h3>Modifier un smartphone:</h3>
+        <form  method="post" encType="multipart/form-data" action="/update-smartphone/<%= smartphone._id %>">
+            <div>
+                <label for="smartphone-title">Titre ou marque</label>
+                <input id="smartphone-title" type="text" name="title" value="<%= smartphone.title %>">
+            </div>
+            <div>
+                <label for="smartphone-image">Image</label>
+                <input type="smartphone-file" id="image" name="image" accept=".jpg, .jpeg, .png">
+            </div>
+            <div>
+                <label for="smartphone-cpu">CPU</label>
+                <input id="smartphone-cpu" type="text" name="cpu" value="<%= smartphone.description[0] %>">
+            </div>
+            <div>
+                <label for="smartphone-os">Systeme d'exploitation</label>
+                <input id="smartphone-os" type="text" name="os" value="<%= smartphone.description[1] %>">
+            </div>
+            <div>
+                <label for="smartphone-ram">Mémoire RAM</label>
+                <input id="smartphone-ram" type="text" name="ram" value="<%= smartphone.description[2] %>">
+            </div>
+            <div>
+                <label for="smartphone-ssd">Disque dur</label>
+                <input id="smartphone-ssd" type="text" name="ssd" value="<%= smartphone.description[3] %>">
+            </div>
+            <div>
+                <label for="smartphone-gpu">Carte graphique</label>
+                <input id="smartphone-gpu" type="text" name="gpu" value="<%= smartphone.description[4] %>">
+            </div>
+            <div>
+                <label for="smartphone-battery">Batterie</label>
+                <input id="smartphone-battery" type="text" name="battery" value="<%= smartphone.description[5] %>">
+            </div>
+            <div>
+                <label for="smartphone-guarantee">Garantie</label>
+                <input id="smartphone-guarantee" type="text" name="guarantee" value="<%= smartphone.description[6] %>">
+            </div>
+            <div>
+                <label for="smartphone-other">Autre</label>
+             <input id="smartphone-other" type="text" name="other" value="<%= smartphone.description[7] %>">
+            </div>
+            <div>
+                <label for="smartphone-price">Prix en €</label>
+                <input id="smartphone-price" type="number" name="price" value="<%= smartphone.price %>">
+            </div>
+            <div>
+                <label for="smartphone-quantity">quantité</label>
+                <input id="smartphone-quantity" type="number" name="quantity" value="<%= smartphone.quantity %>">
+             </div>
+            <div class="button">
+                <button type="submit">Modifier</button>
+            </div>
+        </form>
+    </div>
+<%- include('../includes/_footer') -%>
+

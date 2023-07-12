@@ -1,0 +1,32 @@
+
+<%- include('../includes/_header') -%>
+    <div class="userform">
+        <h3>Modifier des accessories:</h3>
+        <form  method="post" encType="multipart/form-data" action="/update-accessories/<%= accessories._id %>">
+            <div>
+                <label for="title">Titre ou marque</label>
+                <input id="title" type="text" name="title" value="<%= accessories.title %>">
+            </div>
+            <div>
+                <label for="image">Image</label>
+                <input type="file" id="image" name="image" accept=".svg, .jpg, .jpeg, .png">
+            </div>
+            <div>
+                <label for="accessories-other">Description separée par ",":</label>
+                <textarea id="accessories-other" name="description"  rows="10" cols="33" value="<%= accessories.description %>"> </textarea>
+            </div>
+            <div>
+                <label for="accessories-price">Prix en €</label>
+                <input id="accessories-price" type="number" name="price" value="<%= accessories.price %>">
+            </div>
+            <div>
+                <label for="accessories-quantity">quantité</label>
+                <input id="accessories-quantity" type="number" name="quantity" value="<%= accessories.quantity %>">
+             </div>
+            <div class="button">
+                <button type="submit">Modifier</button>
+            </div>
+        </form>
+    </div>
+<%- include('../includes/_footer') -%>
+

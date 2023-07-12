@@ -1,6 +1,6 @@
 <%- include('../includes/_header') -%>
 
-   <section>
+   <section class="section_bg">
         <h3><%= laptop.title %></h3>
         <img src="/images/laptops/<%= laptop.image %>" alt="thinkPad gen 1 image">
         <ul>
@@ -11,6 +11,13 @@
         <p> <%= laptop.price %>,00 €</p>
         <p>Code de réduction: SPRING</p>
         <p> quantité totale disponible en ce moment:<%= laptop.quantity %> ordinateurs portables</p>
+        <video controls class="details_video">
+            <source src="/video/laptop.mp4" type="video/mp4" />
+            <p>
+                Votre navigateur ne prend pas en charge la vidéo HTML. Voici un
+                lien vers la vidéo à la place.
+            </p>
+        </video>          
     </section>
 
 <%- include('../includes/_footer') -%>

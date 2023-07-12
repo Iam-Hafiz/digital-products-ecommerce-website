@@ -1,0 +1,18 @@
+<%- include('../includes/_header') -%>
+
+   <section class="section_bg">
+        <h3><%= smartphone.title %></h3>
+        <img src="../images/smartphones/<%= smartphone.image %>" alt="smartphone image">
+        <ul>
+            <% smartphone.description.forEach( element => { %>
+                <li> <%= element %> </li>
+            <% }); %>
+        </ul>
+        <p> <%= smartphone.price %>,00 €</p>
+        <p>Code de réduction: SPRING</p>
+        <p> quantité totale disponible en ce moment:<%= smartphone.quantity %>smartphones</p>
+        <a href="/delete-smartphone/<%= smartphone._id %>" class="deleteLaptopLink"><i class="fa-solid fa-trash" style="color: #0080ff;"></i> Suprimer</a>
+        <a href="/update-smartphone/<%= smartphone._id %>" class="deleteLaptopLink"><i class="fa-solid fa-square-pen" style="color: #0080ff;"></i> Modifier</a>
+    </section>
+
+<%- include('../includes/_footer') -%>

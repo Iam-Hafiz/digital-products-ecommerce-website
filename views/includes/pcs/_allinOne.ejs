@@ -2,25 +2,26 @@
 <% if(allinOnes.length > 0) { %>
     <% allinOnes.forEach((computer) => {  %>
         <div class="product_specifications" aria-label="ordinateurs portables">
-            <h3><%= computer.title %></h3>
-            <a href="/all-inOne/details/<%= computer._id %>" class="img_wrapper" tabindex="-1"><img src="../images/allinOne/<%= computer.image %>" alt="thinkPad gen 1 image" tabindex="0"></a>
-            <ul>
+            <h3 class="product_title"><%= computer.title %></h3>
+            <a href="/all-inOne/details/<%= computer._id %>" class="img_wrapper" tabindex="-1"><img src="/images/allinOnes/<%= computer.image %>" alt="thinkPad gen 1 image" tabindex="0"></a>
+            <ul class="product_description_ul">
                 <% computer.description.forEach( element => { %>
                         <li> <%= element %> </li>
                 <% }); %>
             </ul>
             <div class="toggle_btn" role="button" tabindex="0">
                 <span class="toggle_text">Afficher les spécifications complètes</span>
-                <span><i class="fa-solid fa-angle-down"></i></span>
+                <span><i class="fa-solid fa-angle-down fa-beat"></i></span>
             </div>
             <div class="more-details-link-wrapper">
                 <a class= "more-details-link" href="/all-inOne/details/<%= computer._id %>">En Savoir Plus</a>
             </div>
-            <div> <%= computer.price %> ,00 €</div>
+            <div> <%= computer.price %>,00 €</div>
             <div>Code de réduction: SPRING</div>
-            <div class="product_unavailable"><i class="fa-solid fa-circle-xmark" style="color: #ff0000;"></i> Indisponible</div>
-            <div class="button">
-                <button>Ajouter Au Panier</button>
+            <div class="product_available"><i class="fa-solid fa-circle-check" style="color: rgb(0, 90, 0);"></i> disponible</div>
+            <input type="text" value="<%= computer._id %>" class="product_id">
+            <div class="button addToCart" role="button" aria-label="ajouter au panier">
+                <button class='addToCart_btn'> <i class="fa-solid fa-spinner cart_btn_icons"></i><span>Ajouter Au Panier</span></button>
             </div>
         </div>
     <% }) %>

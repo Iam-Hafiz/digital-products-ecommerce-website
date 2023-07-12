@@ -14,6 +14,15 @@ setproductsQty();
 // display shopping cart **********************************************************************************************************************
 displayCart();
 
+// play Audio files ************************************************************************************************************************
+async function playAudio(audio) {
+    try {
+      await audio.play();
+    } catch (err) {
+      console.log('could not play audio:' + err)
+    }
+}
+
 // get data from database**********************************************************************************************************************
 addEventListener('DOMContentLoaded', async (e) => {
     let products = null;
@@ -27,29 +36,50 @@ addEventListener('DOMContentLoaded', async (e) => {
     if (data.errors) {
        console.log('Could not get data');
     }
-    if (data.laptopsArr) {
-        products = data.laptopsArr;
+    if (data.products) {
+        products = data.products;
     }
   }
   catch (err) {
     console.log(err);
   }
- // console.log('laptops are:', products, 'not nul:', data.laptopsArr);
+//console.log('products are:', products );
 
     // loop throuth the buttons and get the product info
-    var buttons = document.querySelectorAll('.addToCart');
+    let buttons = document.querySelectorAll('.addToCart');
+    let spinIcon = document.querySelectorAll(".addToCart .fa-spinner");
+    let btnText = document.querySelectorAll(".addToCart_btn > span");
     for (let i =0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', (event) => {
-            products_quantity_in_cart(products[i])
-            totalPrice(products[i])
-             //console.log('pay:', products)
+            const audio = document.querySelector(".addToCart_btn_audio");
+            if(audio){
+                playAudio(audio)
+            }
+            const itemId = buttons[i].previousElementSibling.value;
+            //console.log('itemId: ', itemId, typeof itemId)
+            products.forEach(product => {
+                if(itemId === product._id){
+                    products_quantity_in_cart(product);
+                    totalPrice(product);
+                }
+            })
+             //button animations
+             buttons[i].style.cursor = "wait";
+             spinIcon[i].classList.add("spin_icon");
+             btnText[i].textContent = "";
+            setTimeout(() => {
+                buttons[i].style.pointerEvents = "none";
+                spinIcon[i].classList.replace("spin_icon", "checked_icon");
+                spinIcon[i].classList.replace("fa-spinner", "fa-check");
+                btnText[i].textContent = "Bien ajouté";
+            }, 1000); //1s = 1000ms
         });
     }
 });
 
 //update the number in the cart icon and local storge**************************************************************************************
 function products_quantity_in_cart(product) {
-    const productsQty = parseInt(window.localStorage.getItem("productsQty"))
+    let productsQty = parseInt(window.localStorage.getItem("productsQty"))
     if( productsQty ) {
         window.localStorage.setItem("productsQty", productsQty + 1)
         // increase the cart number text also by 1
@@ -99,7 +129,7 @@ function displayCart() {
     let cartItems = JSON.parse(window.localStorage.getItem("productsInLocalStorge"))
     let productWrapper = document.querySelector(".cart_product_wrapper")
     let total = parseInt(window.localStorage.getItem("totalPrice"))
-    if(cartItems && productWrapper){
+    if(cartItems && productWrapper && total){
         productWrapper.innerHTML = '';
         Object.values(cartItems).map(item => {
             productWrapper.innerHTML += `
@@ -107,7 +137,7 @@ function displayCart() {
                 <div class="cart_product_container">
                     <div class="cart_product product_header">
                         <button class="delete_cart_item" aria-label="supprimer"><i class="fa-solid fa-trash-can"></i></button>
-                        <a href="laptop/${item._id}" tabindex="-1"><img src="/images/laptops/${item.image}" alt="image d'un ordinateur portable" tabindex="0"></a>
+                        <a href="laptop/${item._id}" tabindex="-1"><img src="/images/${item.productType + "s"}/${item.image}" alt="image du produit" tabindex="0"></a>
                         <span class="cart_product_title">${item.title}</span>
                     </div>
                     <div class="cart_price other_header">${item.price},00 €</div>
@@ -130,7 +160,7 @@ function displayCart() {
         <div class="cart_btn" id="cart_btn">
             <form  method="POST" action="/order" encType="multipart/form-data" id="order_form_id" class="order_form">
                 <div id="order_form_inputs_wrapper"></div>
-                <button class="order_btn">Commander</button>
+                <button class="order_btn"><i class="fa-solid fa-circle-notch"></i> Commander</button>
             </form>
         </div>
         `;
@@ -138,57 +168,64 @@ function displayCart() {
 }
 
 // delete items from cart ********************************************************************************************************************************
-//let deleteButtons = document.querySelectorAll('.delete_cart_item');
-for (let i =0; i < document.querySelectorAll('.delete_cart_item').length; i++) {
-    const deleteButtonsB = document.querySelectorAll('.delete_cart_item');
-    deleteButtonsB[i].addEventListener('click', (e) => {
-        const cartItems = JSON.parse(window.localStorage.getItem("productsInLocalStorge"))
-        const itemsInLocalStorge = [];
-        for (const property in cartItems) {
-          itemsInLocalStorge.push(property);
-        }
-        let price = 0
-        let inCart = 0
-
-        // get item's price and in cart quantity before delete
-        Object.values(cartItems).forEach(element => {
-            if(element._id === itemsInLocalStorge[i]) {
-                price = element.price;
-                inCart = element.productsInCart;
+let deleteButtonsB = document.querySelectorAll('.delete_cart_item');
+if(deleteButtonsB){
+    for (let i =0; i < document.querySelectorAll('.delete_cart_item').length; i++) {
+        deleteButtonsB[i].addEventListener('click', (e) => {
+            const audio = document.querySelector(".cart_deleteicon_audio");
+            if(audio){
+                playAudio(audio)
             }
-        });
-        const total = parseInt(window.localStorage.getItem("totalPrice"))
-        const productsQty = parseInt(window.localStorage.getItem("productsQty"))
+            let cartItems = JSON.parse(window.localStorage.getItem("productsInLocalStorge"))
+            let total = parseInt(window.localStorage.getItem("totalPrice"))
+            let productsQty = parseInt(window.localStorage.getItem("productsQty"))
+            let itemsInLocalStorge = [];
+            if(cartItems && total && productsQty){
+                for (const property in cartItems) {
+                    itemsInLocalStorge.push(property);
+                }
+                let price = 0
+                let inCart = 0
 
-        // delete item also in local storge
-        if(itemsInLocalStorge.length === 1){
-            window.localStorage.clear()
-            //window.localStorage.removeItem('productsQty')
-            document.querySelector('.productsQty').textContent = '';
-            document.querySelector('.mobile_productsQty').textContent = '';
-            //window.localStorage.removeItem('productsInLocalStorge')
-            //window.localStorage.removeItem('totalPrice')
+                // get item's price and in cart quantity before delete
+                Object.values(cartItems).forEach(element => {
+                    if(element._id === itemsInLocalStorge[i]) {
+                        price = element.price;
+                        inCart = element.productsInCart;
+                    }
+                });
 
-            // update total price of the cart page
-            document.querySelector('.cart_total .total').textContent = '';
-            document.getElementById('order_form_id').innerHTML = '';
-        } else {
-            window.localStorage.setItem("productsQty", productsQty - inCart);
-            document.querySelector('.productsQty').textContent = productsQty - inCart;
-            document.querySelector('.mobile_productsQty').textContent = productsQty - inCart;
+                // delete item also in local storge
+                if(itemsInLocalStorge.length === 1){
+                    window.localStorage.clear()
+                    document.querySelector('.productsQty').textContent = '';
+                    document.querySelector('.mobile_productsQty').textContent = '';
 
-            // recalculate the total price and save to local storge
-            window.localStorage.setItem("totalPrice", (total - (inCart * price)))
-            // update total price of the cart page
-            document.querySelector('.cart_total .total').textContent = ((total - (inCart * price )) + ',00 €');
+                    // update total price of the cart page
+                    document.querySelector('.cart_total .total').textContent = '';
+                    document.getElementById('order_form_id').innerHTML = '';
+                } else {
+                    window.localStorage.setItem("productsQty", productsQty - inCart);
+                    document.querySelector('.productsQty').textContent = productsQty - inCart;
+                    document.querySelector('.mobile_productsQty').textContent = productsQty - inCart;
 
-            // delete item
-            delete cartItems[itemsInLocalStorge[i]];
-            window.localStorage.setItem("productsInLocalStorge", JSON.stringify(cartItems))
-        }
-            // remove product from cart page (html)
-            e.target.parentElement.parentElement.parentElement.remove();
-    })
+                    // recalculate the total price and save to local storge
+                    window.localStorage.setItem("totalPrice", (total - (inCart * price)))
+                    // update total price of the cart page
+                    document.querySelector('.cart_total .total').textContent = ((total - (inCart * price )) + ',00 €');
+
+                    // delete item
+                    delete cartItems[itemsInLocalStorge[i]];
+                    window.localStorage.setItem("productsInLocalStorge", JSON.stringify(cartItems))
+                }
+                // remove product from cart page (html)
+                e.target.parentElement.parentElement.parentElement.classList.add("remove_tag"); /*.remove();*/
+                setTimeout(() => {
+                    window.location.assign('/cart');
+                }, 1600);
+            }
+        })
+    }
 }
 
 

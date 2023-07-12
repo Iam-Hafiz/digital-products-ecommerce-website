@@ -1,0 +1,18 @@
+<%- include('../includes/_header') -%>
+
+   <section class="section_bg">
+        <h3><%= tablette.title %></h3>
+        <img src="../images/tablettes/<%= tablette.image %>" alt="tablette image">
+        <ul>
+            <% tablette.description.forEach( element => { %>
+                <li> <%= element %> </li>
+            <% }); %>
+        </ul>
+        <p> <%= tablette.price %>,00 €</p>
+        <p>Code de réduction: SPRING</p>
+        <p> quantité totale disponible en ce moment:<%= tablette.quantity %> tablettes</p>
+        <a href="/delete-tablette/<%= tablette._id %>" class="deleteLaptopLink"><i class="fa-solid fa-trash" style="color: #0080ff;"></i> Suprimer</a>
+        <a href="/update-tablette/<%= tablette._id %>" class="deleteLaptopLink"><i class="fa-solid fa-square-pen" style="color: #0080ff;"></i> Modifier</a>
+    </section>
+
+<%- include('../includes/_footer') -%>

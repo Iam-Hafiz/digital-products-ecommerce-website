@@ -21,6 +21,7 @@ const addLaptop_post = (req, res) => {
     // Create a laptop document
     const laptop = new Laptop({
         title: req.body.title,
+        productType: req.body.productType,
         image: imageFile.name,
         description: [
             req.body.cpu,

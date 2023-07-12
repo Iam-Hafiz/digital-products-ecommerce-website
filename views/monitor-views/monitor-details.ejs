@@ -1,6 +1,6 @@
 <%- include('../includes/_header') -%>
 
-   <section>
+   <section class="section_bg">
         <h3><%= monitor.title %></h3>
         <img src="/images/monitors/<%= monitor.image %>" alt="thinkPad gen 1 image">
         <ul>
@@ -11,6 +11,24 @@
         <p> <%= monitor.price %> </p>
         <p>Code de réduction: SPRING</p>
         <p> Quantité totale disponible en ce moment: <%= monitor.quantity %> moniteurs</p>
+        <video controls class="details_video">
+            <source src="/video/monitor2.mp4" type="video/mp4" />
+            <p>
+                Votre navigateur ne prend pas en charge la vidéo HTML. Voici un
+                lien vers la vidéo à la place.
+            </p>
+        </video>
+        <!--
+        <div>
+            <video controls class="details_video">
+                <source src="/video/monitor1.mp4" type="video/mp4" />
+                <p>
+                    Votre navigateur ne prend pas en charge la vidéo HTML. Voici un
+                    lien vers la vidéo à la place.
+                </p>
+            </video>  
+        </div> 
+        --> 
     </section>
 
 <%- include('../includes/_footer') -%>

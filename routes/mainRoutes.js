@@ -26,11 +26,5 @@ router.post('/contact', contactController);
 
 router.get('/privacy-terms', mainController.privacy_terms);
 
-router.get('/smartphone', mainController.smartphone);
-
-router.get('/accessories', mainController.accessories);
-
-router.get('/tablette', mainController.tablette);
-
 module.exports = router;
 

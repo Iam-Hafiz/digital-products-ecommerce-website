@@ -13,6 +13,10 @@ const cartSchema = mongoose.Schema({
         quantity: {
             type: Number,
             default: 1
+        },
+        productType: {
+            type: String,
+            required: true
         }
     }]
 }, { timestamps: true });

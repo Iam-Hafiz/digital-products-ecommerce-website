@@ -1,11 +1,39 @@
 
 <%- include('../includes/_header') -%>
 
-    <section >
+    <section class="section_bg">
         <h2>Espace d'administrateur</h2>
         <div class="espace_admin">
             <div>
                 <h3>Ordinateurs portables</h3>
+                <h4>Mettre à jour un ordinateurs portables</h4>
+                <ul>
+                    <li><a href="/get-laptop">Trouver un ordinateur</a></li>
+                    <li><a href="/get-laptop">Suprimer un ordinateur</a></li>
+                    <li><a href="/add-laptop">Ajouter un ordinateur</a></li>
+                    <li><a href="/get-laptop">Modifier un ordinateur</a></li>
+                </ul>
+                <h4>Mettre à jour une tablette</h4>
+                <ul>
+                    <li><a href="/get-tablette">Trouver une tablette</a></li>
+                    <li><a href="/get-tablette">Suprimer une tablette</a></li>
+                    <li><a href="/add-tablette">Ajouter une tablette</a></li>
+                    <li><a href="/get-tablette">Modifier une tablette</a></li>
+                </ul>
+                <h4>Mettre à jour un smartphone</h4>
+                <ul>
+                    <li><a href="/get-smartphone">Trouver un smartphone</a></li>
+                    <li><a href="/get-smartphone">Suprimer un smartphone</a></li>
+                    <li><a href="/add-smartphone">Ajouter un smartphone</a></li>
+                    <li><a href="/get-smartphone">Modifier un smartphone</a></li>
+                </ul>
+                <h4>Mettre à jour des accessories</h4>
+                <ul>
+                    <li><a href="/get-accessories">Trouver un accessories</a></li>
+                    <li><a href="/get-accessories">Suprimer un accessories</a></li>
+                    <li><a href="/add-accessories">Ajouter un accessories</a></li>
+                    <li><a href="/get-accessories">Modifier un accessories</a></li>
+                </ul>
                 <h4>Statistiques:</h4>
                 <ul>
                     <% if(countlaptops && totalLaptops && totalPrice) { %>
@@ -15,27 +43,12 @@
                             <% sum = sum + quantity.total %>
                         <% }) %>
                         <li>Quantity totale des ordinateurs portables à prix minimum 1600 €: <%= sum %></li>
-                        
+
                         <% let sumPrice = 0; %>
                         <% totalPrice.forEach( price => { %>
                             <% sumPrice = sumPrice + price.totalAmount %>
                         <% }) %>
                         <li>Prix totale des ordinateurs portables: <%= sumPrice %>,00 €</li>
-                    <% } %>
-                </ul>
-                <h4>Mettre à jour:</h4>
-                <ul>
-                    <li><a href="/get-laptop">Trouver un ordinateur</a></li>
-                    <li><a href="/get-laptop">Suprimer un ordinateur</a></li>
-                    <li><a href="/add-laptop">Ajouter un ordinateur</a></li>
-                    <li><a href="/get-laptop">Modifier un ordinateur</a></li>
-                </ul>
-                <h4>la list complète:</h4>
-                <ul>
-                    <% if(laptops){ %>
-                        <% laptops.forEach(laptop => { %>
-                            <li>Titre: <%= laptop.title %>, Prix: <%= laptop.price %>, Quantity: <%= laptop.quantity%></li>
-                        <% }) %>
                     <% } %>
                 </ul>
             </div>

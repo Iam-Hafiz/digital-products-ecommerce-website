@@ -50,7 +50,25 @@ const createToken = (id, isAdmin) => {
 *******************************************************************************/
 
 const login_get = (req, res) => {
-  res.render('users-views/login');
+  const token = req.cookies.jwtCookie;
+
+  // check json web token exists & is verified
+  if (token) {
+      /* to generate a secret in node, run node commend in a node js terminal then run:
+      > require('crypto').randomBytes(64).toString('hex') =>  'the generated secret' */
+    jwt.verify(token, process.env.jwt_secret, (err, decodedToken) => {
+      if (err) {
+        console.log(err.message);
+        res.redirect('/');
+      } else {
+          //console.log('this is the decodedToken of user', decodedToken)
+          res.cookie('jwtCookie', '', { maxAge: 1 });
+          res.render('users-views/login', { title: 'Se connecter'});
+      }
+    });
+  } else {
+    res.render('users-views/login', { title: 'Se connecter'});
+  }
 }
 
 const login_post = async (req, res) => {

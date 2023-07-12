@@ -1,0 +1,67 @@
+
+<%- include('../includes/_header') -%>
+    <div class="userform">
+        <div class="add_laptop_wrapper">
+            <h3>Veuillez remplir ce formulaire pour ajouter un nouveau smartphone</h3>
+            <p>Les champs obligatoires sont suivis de *.</p>
+            <form  method="post" encType="multipart/form-data" action="/add-smartphone">
+                <div>
+                    <label for="smartphoneTitle">Titre ou marque<span>*</span></label>
+                    <input id="smartphoneTitle" type="text" name="title" aria-label="champs obligatoire" required>
+                </div>
+                <div class="product_Type">
+                    <label for="smartphone_productType">Type<span>*</span></label>
+                    <input type="text" id="smartphone_productType" name="productType" value="smartphone" aria-label="champs obligatoire">
+                </div>
+                <div>
+                    <label for="smartphone-image">Image<span>*</span></label>
+                    <input type="file" id="smartphone-image" name="image" accept=".svg, .jpg, .jpeg, .png, .webp" aria-label="champs obligatoire" required>
+                </div>
+                <div>
+                    <label for="smartphone-cpu">CPU<span>*</span></label>
+                    <input id="smartphone-cpu" type="text" name="cpu" aria-label="champs obligatoire" required>
+                </div>
+                <div>
+                    <label for="smartphone-os">Systeme d'exploitation</label>
+                    <input id="smartphone-os" type="text" name="os">
+                </div>
+                <div>
+                    <label for="smartphone-ram">Mémoire RAM</label>
+                    <input id="smartphone-ram" type="text" name="ram">
+                </div>
+                <div>
+                    <label for="smartphone-ssd">Disque dur ou ssd</label>
+                    <input id="smartphone-ssd" type="text" name="ssd" >
+                </div>
+                <div>
+                    <label for="smartphone-gpu">Carte graphique</label>
+                    <input id="smartphone-gpu" type="text" name="gpu">
+                </div>
+                <div>
+                    <label for="smartphone-battery">Batterie</label>
+                    <input id="smartphone-battery" type="text" name="battery">
+                </div>
+                <div>
+                    <label for="smartphone-guarantee">Garantie</label>
+                    <input id="smartphone-guarantee" type="text" name="guarantee">
+                </div>
+                <div>
+                    <label for="smartphone-other">Autre</label>
+                 <input id="smartphone-other" type="text" name="other">
+                </div>
+                <div>
+                    <label for="smartphone-price">Prix en €<span>*</span></label>
+                    <input id="smartphone-price" type="number" name="price" aria-label="champs obligatoire" required>
+                </div>
+                <div>
+                    <label for="smartphone-quantity">quantité</label>
+                    <input id="smartphone-quantity" type="number" name="quantity">
+                 </div>
+                <div class="button">
+                    <button type="submit">Ajouter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+<%- include('../includes/_footer') -%>
+

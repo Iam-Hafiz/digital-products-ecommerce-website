@@ -1,5 +1,6 @@
 // mobile drop down menu, for both the menu icon and the search bar
 const dropDownMenu = document.querySelector('.drop_down_content');
+
 // used to rotate the drop down icon
 const dropDownIcon = document.querySelector('.fa-square-caret-down');
 function toggleDropDown() {

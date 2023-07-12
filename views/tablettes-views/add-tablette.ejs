@@ -1,0 +1,67 @@
+
+<%- include('../includes/_header') -%>
+    <div class="userform">
+        <div class="add_laptop_wrapper">
+            <h3>Veuillez remplir ce formulaire pour ajouter une nouvelle tablette</h3>
+            <p>Les champs obligatoires sont suivis de *.</p>
+            <form  method="post" encType="multipart/form-data" action="/add-tablette">
+                <div>
+                    <label for="tabletteTitle">Titre ou marque<span>*</span></label>
+                    <input id="tabletteTitle" type="text" name="title" aria-label="champs obligatoire" required>
+                </div>
+                <div class="product_Type">
+                    <label for="tablette_productType">Type<span>*</span></label>
+                    <input type="text" id="tablette_productType" name="productType" value="tablette" aria-label="champs obligatoire">
+                </div>
+                <div>
+                    <label for="tablette-image">Image<span>*</span></label>
+                    <input type="file" id="tablette-image" name="image" accept=".svg, .jpg, .jpeg, .png, .webp" aria-label="champs obligatoire" required>
+                </div>
+                <div>
+                    <label for="tablette-cpu">CPU<span>*</span></label>
+                    <input id="tablette-cpu" type="text" name="cpu" aria-label="champs obligatoire" required>
+                </div>
+                <div>
+                    <label for="tablette-os">Systeme d'exploitation</label>
+                    <input id="tablette-os" type="text" name="os">
+                </div>
+                <div>
+                    <label for="tablette-ram">Mémoire RAM</label>
+                    <input id="tablette-ram" type="text" name="ram">
+                </div>
+                <div>
+                    <label for="tablette-ssd">Disque dur ou ssd</label>
+                    <input id="tablette-ssd" type="text" name="ssd" >
+                </div>
+                <div>
+                    <label for="tablette-gpu">Carte graphique</label>
+                    <input id="tablette-gpu" type="text" name="gpu">
+                </div>
+                <div>
+                    <label for="tablette-battery">Batterie</label>
+                    <input id="tablette-battery" type="text" name="battery">
+                </div>
+                <div>
+                    <label for="tablette-guarantee">Garantie</label>
+                    <input id="tablette-guarantee" type="text" name="guarantee">
+                </div>
+                <div>
+                    <label for="tablette-other">Autre</label>
+                 <input id="tablette-other" type="text" name="other">
+                </div>
+                <div>
+                    <label for="tablette-price">Prix en €<span>*</span></label>
+                    <input id="tablette-price" type="number" name="price" aria-label="champs obligatoire" required>
+                </div>
+                <div>
+                    <label for="tablette-quantity">quantité</label>
+                    <input id="tablette-quantity" type="number" name="quantity">
+                 </div>
+                <div class="button">
+                    <button type="submit">Ajouter</button>
+                </div>
+            </form>
+        </div>
+    </div>
+<%- include('../includes/_footer') -%>
+

@@ -43,6 +43,7 @@ const updateLaptop_post = (req, res) => {
                 })
                 .catch(err => {
                     console.log('Could not update the doc or render the file', err)
+                    res.redirect('/');
                 })
             }
             // If new file, upload file and replace old file
@@ -72,6 +73,7 @@ const updateLaptop_post = (req, res) => {
         })
         .catch(err => {
             console.log('Could not find a laptop', err)
+            res.redirect('/');
         })
     } else {
         res.status(500).json({error: 'ID Invalid'})

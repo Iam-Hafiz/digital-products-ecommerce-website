@@ -1,0 +1,60 @@
+
+<%- include('../includes/_header') -%>
+    <div class="userform">
+        <h3>Modifier une tablette:</h3>
+        <form  method="post" encType="multipart/form-data" action="/update-tablette/<%= tablette._id %>">
+            <div>
+                <label for="tablette-title">Titre ou marque</label>
+                <input id="tablette-title" type="text" name="title" value="<%= tablette.title %>">
+            </div>
+            <div>
+                <label for="tablette-image">Image</label>
+                <input type="file" id="tablette-image" name="image" accept=".svg, .jpg, .jpeg, .png">
+            </div>
+            <div>
+                <label for="tablette-cpu">CPU</label>
+                <input id="tablette-cpu" type="text" name="cpu" value="<%= tablette.description[0] %>">
+            </div>
+            <div>
+                <label for="tablette-os">Systeme d'exploitation</label>
+                <input id="tablette-os" type="text" name="os" value="<%= tablette.description[1] %>">
+            </div>
+            <div>
+                <label for="tablette-ram">Mémoire RAM</label>
+                <input id="tablette-ram" type="text" name="ram" value="<%= tablette.description[2] %>">
+            </div>
+            <div>
+                <label for="tablette-ssd">Disque dur</label>
+                <input id="tablette-ssd" type="text" name="ssd" value="<%= tablette.description[3] %>">
+            </div>
+            <div>
+                <label for="tablette-gpu">Carte graphique</label>
+                <input id="tablette-gpu" type="text" name="gpu" value="<%= tablette.description[4] %>">
+            </div>
+            <div>
+                <label for="tablette-battery">Batterie</label>
+                <input id="tablette-battery" type="text" name="battery" value="<%= tablette.description[5] %>">
+            </div>
+            <div>
+                <label for="tablette-guarantee">Garantie</label>
+                <input id="tablette-guarantee" type="text" name="guarantee" value="<%= tablette.description[6] %>">
+            </div>
+            <div>
+                <label for="tablette-other">Autre</label>
+             <input id="tablette-other" type="text" name="other" value="<%= tablette.description[7] %>">
+            </div>
+            <div>
+                <label for="tablette-price">Prix en €</label>
+                <input id="tablette-price" type="number" name="price" value="<%= tablette.price %>">
+            </div>
+            <div>
+                <label for="tablette-quantity">quantité</label>
+                <input id="tablette-quantity" type="number" name="quantity" value="<%= tablette.quantity %>">
+             </div>
+            <div class="button">
+                <button type="submit">Modifier</button>
+            </div>
+        </form>
+    </div>
+<%- include('../includes/_footer') -%>
+

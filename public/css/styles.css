@@ -1,3 +1,82 @@
+/* angkor-regular - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Angkor';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/angkor-v28-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+/************************************************************************************************************************************************
+abeezee-regular - latin
+**********************************************************************************************************************************************/
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'ABeeZee';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/abeezee-v22-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+  /* abeezee-italic - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'ABeeZee';
+    font-style: italic;
+    font-weight: 400;
+    src: url('../fonts/abeezee-v22-latin-italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+
+/**********************************************************************************************************************************************
+* abhaya-libre-regular - latin
+************************************************************************************************************************************************/
+
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Abhaya Libre';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/abhaya-libre-v14-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+  /* abhaya-libre-500 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Abhaya Libre';
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/abhaya-libre-v14-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+  /* abhaya-libre-600 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Abhaya Libre';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/abhaya-libre-v14-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+  /* abhaya-libre-700 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Abhaya Libre';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/abhaya-libre-v14-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+  /* abhaya-libre-800 - latin */
+  @font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Abhaya Libre';
+    font-style: normal;
+    font-weight: 800;
+    src: url('../fonts/abhaya-libre-v14-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+
 /* *******************************************************************************
 ****  global variables
 ******************************************************************************* */
@@ -10,7 +89,7 @@
     --text-color:  rgb(253, 254, 254);
     --bg-color: rgb(33, 47, 61);
     --border-radius: 5px;
-    --gab-grid: 1.5rem;
+    --gab-grid: 2rem;
     --padding-header-foooter-left-right: 1rem;
 
 /* main *********************************************/
@@ -21,6 +100,7 @@
     /** hover vars **/
     --bg-color-hover: rgb(151, 200, 255);
     --txt-color-hover: rgb(1, 0, 255);
+    --radial-gradient-colors: radial-gradient(rgb(255,0,0), rgb(111, 0, 255), rgb(0, 0, 255));
     /** active vars **/
     --bg-color-active:  rgb(40, 116, 166);
     --btn-bg-color: rgb(33, 97, 140);
@@ -52,7 +132,6 @@ body * {
 
 /* To ensure media is never larger than its responsive container */
 picture,
-video,
 img {
     max-width: 100%;
     width: auto;
@@ -62,8 +141,11 @@ img {
 /* styles du modèle de démo */
 body {
     font-size: 1.6rem;
-    background-color: rgb(238, 238, 238);
-    font-family: arial, sans-serif;
+    /*background-color: rgb(238, 238, 238);
+    font-family: arial, sans-serif; */
+    font-family: 'ABeeZee';
+    font-style: normal;
+    line-height: 2;
     margin: 0;
     padding: 0;
 }
@@ -75,11 +157,12 @@ ul, ol {
 }
 
 .container {
+    background-color: var(--bg-color);
     margin: auto;
-    background-color: rgb(255, 255, 255);
-    padding: 1.5rem;
+    padding: 2rem;
     max-width: 1400px;
-    border-radius: var(--border-radius);
+    border: 1px solid rgb(185, 185, 185);
+    display: none;
 }
 
 .nav,
@@ -99,6 +182,33 @@ header {
     background-color: var(--bg-color);
     padding: 0 var(--padding-header-foooter-left-right);
     margin: auto;
+    box-shadow: inset 0.5rem 0.5rem 5px 5px rgb(20, 29, 37), 0.2rem 0.2rem 2px 2px rgb(20, 29, 37);
+}
+
+h2 {
+    font-family: 'Angkor';
+}
+
+.myTrack {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation-name: drive;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+}
+
+@keyframes drive {
+    from { transform: translateX(-50%) }
+    to { transform: translateX(50%) }
+}
+
+.myTrack > p {
+    color: var(--text-color);
+    margin: 0;
 }
 
 .logo {
@@ -112,8 +222,12 @@ a {
 }
 
 a:focus,
-img:hover,
 img:focus {
+    border: var(--border-blue-focus);
+    border-radius: var(--border-radius);
+}
+
+img:hover {
     border: var(--border-blue-focus);
     border-radius: var(--border-radius);
 }
@@ -131,18 +245,29 @@ input:focus {
     flex-direction: column;
     align-items: center;
     color: rgb(0, 0, 0);
+    box-shadow: inset 0.5rem 0.5rem 5px 5px rgb(92, 92, 92), 0.2rem 0.2rem 2px 2px rgb(128, 128, 128);
+}
+
+.nav ul:first-child a {
+    font-style: italic;
 }
 
 .nav ul:first-child a,
 .nav ul:nth-child(2) a {
     color: var(--text-color);
+    box-shadow: inset 0.5rem 0.5rem 5px 5px rgb(20, 29, 37), 0.2rem 0.2rem 2px 2px rgb(20, 29, 37);
+}
+
+.nav ul a,
+footer input[type="submit"] {
+    transition: 1s;
 }
 
 .nav ul a:hover,
 footer input[type="submit"]:hover {
-   /* background-color:  var(--bg-color-hover);*/
-    color: var(--txt-color-hover);
-    background: radial-gradient(rgb(255,0,0), rgb(255,255,0), rgb(30, 144, 255));
+    color: var(--text-color);
+    background: rgb(44, 44, 255);
+    box-shadow: inset 0.5rem 0.5rem 5px 5px rgb(0, 0, 138), 0.2rem 0.2rem 2px 2px rgb(0, 0, 138);
 }
 
 .nav ul a:active,
@@ -155,6 +280,7 @@ footer input[type="submit"]:active {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    box-shadow: inset 0.5rem 0.5rem 5px 5px rgb(20, 29, 37), 0.2rem 0.2rem 2px 2px rgb(20, 29, 37);
 }
 
 .nav ul:nth-child(4) {
@@ -188,7 +314,7 @@ header li {
 .user_drop_down_content {
     height: 0;
     overflow: hidden;
-    transition: height 0.5s;
+    transition: height 1s;
 }
 
 .user_drop_down_content li {
@@ -209,6 +335,7 @@ header li {
 
 /* toggle drop down content*/
 .nav .user_drop_down_content_display {
+    transition: height 1s;
     height: auto;
     transition: height 0.5s;
     position: absolute;
@@ -225,74 +352,251 @@ header li {
 /******************************************************************************
 ** main **
 *******************************************************************************/
+/* home background video styles ******************************/
+
+.bg_video_container {
+    box-sizing: border-box;
+    margin: auto;
+    position: relative;
+    max-width: 2000px;
+    width: 100%;
+    height: 50vh;
+    border-left: 1px solid rgb(185, 185, 185);
+    border-right: 1px solid rgb(185, 185, 185);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.bg_video_container .wellcome_text_wrapper {
+    width: 100%;
+    text-align: center;
+    color: var(--text-color);
+    z-index: 1;
+}
+
+.wellcome_text_wrapper h1 {
+    font-family: 'Angkor';
+    margin-bottom: 2rem;
+}
+
+.bg_video_wrapper {
+    position: absolute;
+    box-sizing: border-box;
+    margin: auto;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+/* others ***************************************/
+
+.details_video {
+    width: 100%;
+}
+
+.page_content {
+    min-height: 55vh;
+}
+
+.section_bg {
+    background-color: rgb(255, 255, 255);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    font-family: 'Abhaya Libre';
+    font-style: normal;
+}
 
 .container ul {
     list-style-type: disc;
     padding-left: 1.5rem;
 }
 
-/** show or hide  more details *****************************************/
-.product_specifications ul {
-    height: 8rem;
+.product_title {
+    background-color: rgb(165, 165, 165);
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    transition: 1s;
+}
+
+.product_title:hover {
+    background-color: rgb(255, 226, 59);
+    color: rgb(0, 0, 0);
+}
+
+.all_products_header {
+    color: var(--text-color);
+}
+
+/* product display transitions **********/
+
+.product_specifications {
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    padding: 1rem;
+    margin-bottom: 2rem;
+    height: 0;
+    border-radius: var(--border-radius);
     overflow: hidden;
+    box-shadow: inset 0.7rem 0.7rem 7px 7px rgb(128, 128, 128), 0.2rem 0.2rem 2px 2px rgb(128, 128, 128);
+    opacity: 0;
+    transition: all 1.5s ease;
+}
+
+.animate_product_display {
+    opacity: 1;
+    height: auto;
+    animation: product_display 1.5s ease;
+}
+
+@keyframes product_display {
+    0%{ transform: scale(0.5);}
+    100%{ transform: scale(1);}
+}
+
+.product_specifications:hover {
+    font-weight: bold;
+    box-shadow: inset 1rem 1rem 10px rgb(128, 128, 128),  0.2rem 0.2rem 2px 2px rgb(128, 128, 128);
+    background-color: rgb(255, 248, 210);
+    transform: scale(1.02);
+}
+
+/** show or hide  more details *****************************************/
+
+.product_specifications ul {
+    font-family: 'Abhaya Libre';
+    font-style: normal;
+    font-weight: 800;
+}
+
+.product_img_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid var(--bg-color);
+    margin-bottom: 0.3rem;
 }
 
 .product_specifications .toggle_btn {
-    color: #0984e3;
+    color: 	rgb(0,0,255);
+    transition: 0.5s;
 }
 
 .product_specifications .toggle_btn:hover {
-    color: 	rgb(0,0,255);
-    cursor: var(--cursor)
+    color: 	rgb(139, 0, 231);
+    cursor: var(--cursor);
 }
 
 .product_specifications ul.active {
     height: auto;
 }
 
-.product_specifications .toggle_btn.active .fa-angle-down {
+/*.product_specifications .toggle_btn.active .fa-angle-down {
     transform: rotate(180deg);
+}
+*/
+.product_description_ul {
+    display: none;
+}
+
+.product_id {
+    display: none;
+}
+
+.addToCart {
+   /* background-color: var(--bg-color);*/
+    padding: 1rem;
+    border-radius: var(--border-radius);
 }
 
 /** more details link *********************************************/
 
 .more-details-link-wrapper {
-    margin: 0.3rem;
+    margin: 0.5rem;
 }
 
 .more-details-link {
    color: rgb(0, 0, 255);
+   padding: 0.5rem;
+   transition: 0.5s;
 }
 
 .more-details-link:hover,
 .deleteLaptopLink:hover {
-    color: rgb(0,0,255);
+    color: rgb(98, 0, 255);
+    font-weight: bold;
+}
+
+.more-details-link:visited {
+    color: rgb(128, 0, 128);
 }
 
 /*product availability*********************************************/
 
 .product_available {
-    color: rgb( 46, 204, 113 );
+    color: rgb(0, 90, 0);
     font-weight: bold;
 }
 
 .product_unavailable {
-    color: rgb(255, 0, 0);
+    color: rgb(170, 0, 0);
     font-weight: bold;
 }
 
 /* general shoping cart styling ***************************************/
+
+.delete_cart_item {
+    padding: 0;
+     margin: 0.3rem;
+}
+
+.delete_cart_item .fa-trash-can {
+   padding: 0.5rem;
+}
+
 .cart_qty .fa-circle-plus,
 .cart_qty .fa-circle-minus {
     color: var(--btn-bg-color);
     padding: 0.3rem;
     font-size: 2.5rem;
+    transition: 0.5s;
 }
 
 .cart_qty .fa-circle-plus:hover,
 .cart_qty .fa-circle-minus:hover {
     cursor: var(--cursor);
     color: rgb( 152, 0, 255 );
+    transform: scale(1.1);
+}
+
+.remove_tag {
+    transform: translateX(-100vw);
+    transition: 2s;
+    display: none;
+}
+
+/* cart animations *********************/
+
+.cart_btn_icons {
+    height: 0;
+    overflow: hidden;
+}
+
+.spin_icon {
+    height: auto;
+    animation: spin 1.3s ease-in-out infinite;
+}
+
+@keyframes spin {
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+.checked_icon {
+    height: auto;
 }
 
 /** order *********************************************************/
@@ -313,6 +617,16 @@ header li {
     font-weight: bold;
 }
 
+.order_btn .fa-circle-notch {
+    height: 0;
+    overflow: hidden;
+}
+
+.order_btn_spin_icon {
+    height: auto;
+    animation: spin 1.3s ease-in-out infinite;
+}
+
 /** all buttons styling ******************************************/
 button,
 .create-account-link {
@@ -322,6 +636,7 @@ button,
     border-radius: var(--border-radius);
     cursor: var(--cursor);
     color: var(--text-color);
+    transition: 1s;
 }
 
 .button {
@@ -335,10 +650,11 @@ button,
     width: 80%;
 }
 
-button:hover {
-    background: radial-gradient( rgb( 199, 0, 255 ), rgb( 152, 0, 255 ), rgb(0, 0, 255));
+button:hover,
+.create-account-link:hover {
+    background: var(--radial-gradient-colors);
+    transform: scaleX(1.2);
 }
-
 
 button:active {
     background-color: var(--bg-color-active);
@@ -350,18 +666,27 @@ button:focus {
     background-color: rgb(0, 0, 255);
 }
 
+.toggle_btn {
+    transition: 0.5s;
+}
+
 .toggle_btn:focus {
     border: var(--border-blue-focus);
     border-radius: var(--border-radius);
 }
 
 .toggle_btn:hover {
-    border: var(--border-blue-focus);
+    color: rgb(86, 0, 167);
 }
 
 /*** return to home page link **/
 .return-home {
     padding: var(--btn-padding);
+}
+
+.addToCart_btn_audio,
+.cart_deleteicon_audio {
+    display: none;
 }
 
 /* form styling ****************************************************/
@@ -500,6 +825,10 @@ footer ul {
     justify-content: space-between;
 }
 
+footer h4 {
+    font-family: 'Angkor';
+}
+
 footer form {
     background-color: var(--bg-color-footer);
 }
@@ -534,14 +863,21 @@ footer input[type="submit"] {
 .footer .terms {
     display: block;
     color: var(--text-color);
+    transition: 0.5s;
 }
 
 .footer .terms:hover {
     color: rgb(0, 0, 255);
 }
 
+.social_media .fa-brands {
+    transition: 0.5s;
+ }
+
 .social_media .fa-brands:hover {
    border: 1px solid rgb(255, 255, 255);
+   border-radius: 5px;
+   transform: scale(1.2);
 }
 
 /******************************************************************************
@@ -563,6 +899,15 @@ footer input[type="submit"] {
     .nav_mobile {
         display: contents;
         position: relative;
+    }
+
+    header {
+        border: 1px solid rgb(185, 185, 185);
+        border-bottom: none;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 10;
     }
 
     .flex {
@@ -588,13 +933,17 @@ footer input[type="submit"] {
     .nav_mobile ul li a {
         color: var(--text-color);
         padding: 0.3rem;
+        transition: 0.5s;
+    }
+
+    .drop_down_icon {
+        transition: 0.5s;
     }
 
     .nav_mobile ul li a:hover,
     .drop_down_icon:hover {
-        /*background-color: var(--bg-color-hover);*/
-        color: var(--txt-color-hover);
-        background: radial-gradient(rgb(255,0,0), rgb(255,255,0), rgb(30, 144, 255));
+        color: var(--text-color);
+        background: rgb(44, 44, 255);
     }
 
     .nav_mobile .drop_down_content li {
@@ -609,7 +958,7 @@ footer input[type="submit"] {
     .user_drop_down_content_mobile {
         height: 0;
         overflow: hidden;
-        transition: height 0.5s;
+        transition: height 1.5s;
     }
 
     .user_drop_down_content_mobile li {
@@ -631,7 +980,7 @@ footer input[type="submit"] {
     /* toggle drop down content*/
     .nav_mobile .user_drop_down_content_display_mobile {
         height: auto;
-        transition: height 0.5s;
+        transition: height 1.5s;
         position: absolute;
         background-color: var(--bg-color);
         display: block;
@@ -664,7 +1013,6 @@ footer input[type="submit"] {
     .drop_down_content {
         height: 0;
         overflow: hidden;
-        transition: height 0.5s;
     }
 
     .drop_down_content li {
@@ -678,8 +1026,7 @@ footer input[type="submit"] {
     /* toggle drop down content*/
     .drop_down_content_display {
         height: auto;
-        transition: height 0.5s;
-        width: min-content;
+        transition: 1.5s;
         position: absolute;
         background-color: var(--bg-color);
         left: 0;
@@ -786,6 +1133,14 @@ footer input[type="submit"] {
         align-items: center;
     }
 
+    .page_content {
+        padding: 0;
+    }
+
+    .container {
+        padding: 1.5rem;
+    }
+
     /**********************************************************
         footer
     *******************************************************/
@@ -818,6 +1173,7 @@ footer input[type="submit"] {
 @media screen and (min-width: 481px) {
 
     /* header *********************************************************/
+
     .nav ul:nth-child(2) {
         padding: 1rem 0;
     }
@@ -868,6 +1224,7 @@ footer input[type="submit"] {
     }
 
     /* forms *************************************************************/
+
     .find_laptop_form {
         margin-top: 3rem;
         margin-bottom: 12rem;
@@ -875,6 +1232,10 @@ footer input[type="submit"] {
 
     .find_laptop_form label {
         padding: 0.5rem;
+    }
+
+    .product_Type {
+        display: none;
     }
 
     .logo {
@@ -1100,7 +1461,7 @@ footer input[type="submit"] {
     .responsive {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
+        gap: var(--gab-grid);
     }
 
     .responsive > div {

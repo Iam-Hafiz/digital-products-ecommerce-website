@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 // Create laptops schema and model
 const laptopSchema = mongoose.Schema({
     title: String,
+    productType: String,
     image: String,
     description: [{
         type: String,
@@ -26,7 +27,13 @@ const AllinOne = mongoose.model('allinOne', laptopSchema);
 
 const Monitor = mongoose.model('monitor', laptopSchema);
 
-module.exports = { Laptop, AllinOne, Monitor };
+const Tablette = mongoose.model('tablette', laptopSchema);
+
+const Smartphone = mongoose.model('smartphone', laptopSchema);
+
+const Accessories = mongoose.model('accessories', laptopSchema);
+
+module.exports = { Laptop, AllinOne, Monitor, Tablette, Smartphone, Accessories };
 
 
 

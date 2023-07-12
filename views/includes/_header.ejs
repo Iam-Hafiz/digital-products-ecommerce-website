@@ -4,10 +4,10 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title><%= title %> | Digital Pro</title>
+        <meta name="description" content="Le site Web Digital Pro propose des produits numériques et permet aux utilisateurs de créer des comptes, d'ajouter des articles au panier et d'envoyer des commandes. Pour le moment, les produits ne sont pas disponibles." />
         <link rel="icon" type="image/png" href="/icons/favicon/favicon.ico">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
         <link rel="stylesheet" href="/css/styles.css" type="text/css"/>
-        <script src="/js/jquery-3.6.4.min.js"></script>
     </head>
     <body>
         <header>
@@ -62,8 +62,8 @@
                     <li class="drop_down_icon" onclick="toggleDropDown()" role="button" aria-label="menu déroulant" tabindex="0"><i class="fa-regular fa-square-caret-down "></i></li>
                     <li class="drop_down_icon" onclick="toggleDropDown()" role="button" aria-label="rechercher" tabindex="0"><i class="fa-solid fa-magnifying-glass"></i></li>
                     <li class="logo"><a href="/">DIGITAL PRO</a></li>
-                    <li class="user_drop_down_icon" onclick="userIconToggle_mobile()" role="button" aria-label="se connecter ou s'inscrire" tabindex="0"><a role="button" tabindex="0"><i class="fa-solid fa-user"></i></a></li>
-                    <li><a href="/cart"><i class="fa-solid fa-cart-plus"></i><div class="mobile_productsQty"></div></a></li>
+                    <li class="user_drop_down_icon" onclick="userIconToggle_mobile()" role="button" tabindex="0"><a role="button" aria-label="se connecter ou s'inscrire" tabindex="0"><i class="fa-solid fa-user"></i></a></li>
+                    <li ><a href="/cart" aria-label="panier"><i class="fa-solid fa-cart-plus"></i><div class="mobile_productsQty"></div></a></li>
                 </ul>
                 <ul class="drop_down_content">
                     <!--<li>
@@ -99,3 +99,6 @@
             </nav>
         </header>
         <main class="container">
+            <script src="/js/jquery-3.6.4.min.js"></script>
+            <script src="/js/animation.js" type="text/javascript"></script>
+            <div class="page_content">

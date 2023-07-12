@@ -1,0 +1,23 @@
+<%- include('../includes/_header') -%>
+
+   <section class="section_bg">
+        <h3><%= accessories.title %></h3>
+        <img src="/images/accessories/<%= accessories.image %>" alt="accessories image">
+        <ul>
+            <% accessories.description.forEach( element => { %>
+                <li> <%= element %> </li>
+            <% }); %>
+        </ul>
+        <p> <%= accessories.price %>,00 €</p>
+        <p>Code de réduction: SPRING</p>
+        <p> quantité totale disponible en ce moment:<%= accessories.quantity %> accessories/p>
+        <video controls class="details_video">
+            <source src="/video/laptop.mp4" type="video/mp4" />
+            <p>
+                Votre navigateur ne prend pas en charge la vidéo HTML. Voici un
+                lien vers la vidéo à la place.
+            </p>
+        </video>
+    </section>
+
+<%- include('../includes/_footer') -%>

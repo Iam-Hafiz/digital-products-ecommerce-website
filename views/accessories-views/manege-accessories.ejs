@@ -1,0 +1,18 @@
+<%- include('../includes/_header') -%>
+
+   <section class="section_bg">
+        <h3><%= accessories.title %></h3>
+        <img src="../images/accessories/<%= accessories.image %>" alt="accessories image">
+        <ul>
+            <% accessories.description.forEach( element => { %>
+                <li> <%= element %> </li>
+            <% }); %>
+        </ul>
+        <p> <%= accessories.price %>,00 €</p>
+        <p>Code de réduction: SPRING</p>
+        <p> quantité totale disponible en ce moment:<%= accessories.quantity %> accessories</p>
+        <a href="/delete-accessories/<%= accessories._id %>" class="deleteLaptopLink"><i class="fa-solid fa-trash" style="color: #0080ff;"></i> Suprimer</a>
+        <a href="/update-accessories/<%= accessories._id %>" class="deleteLaptopLink"><i class="fa-solid fa-square-pen" style="color: #0080ff;"></i> Modifier</a>
+    </section>
+
+<%- include('../includes/_footer') -%>

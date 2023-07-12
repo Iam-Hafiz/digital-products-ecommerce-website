@@ -1,0 +1,30 @@
+
+<% if(tablettes.length > 0) { %>
+    <% tablettes.forEach((tablette) => {  %>
+        <div class="product_specifications" aria-label="tablettes">
+            <h3 class="product_title"><%= tablette.title %></h3>
+            <a href="tablette/<%= tablette._id %>" class="product_img_wrapper" tabindex="-1"><img src="/images/tablettes/<%= tablette.image %>" alt="tablette image" tabindex="0"></a>
+            <ul class="product_description_ul">
+                <% tablette.description.forEach( element => { %>
+                        <li> <%= element %> </li>
+                <% }); %>
+            </ul>
+            <div class="toggle_btn" role="button" tabindex="0">
+                <span class="toggle_text">Afficher les spécifications complètes</span>
+                <span><i class="fa-solid fa-angle-down fa-beat"></i></span>
+            </div>
+            <div class="more-details-link-wrapper">
+                <a class= "more-details-link" href="/tablette/<%= tablette._id %>">En Savoir Plus</a>
+            </div>
+            <div class="product_price"> <%= tablette.price %>,00 €</div>
+            <div>Code de réduction: SPRING</div>
+            <div class="product_available"><i class="fa-solid fa-circle-check" style="color: rgb(0, 90, 0);"></i> disponible</div>
+            <input type="text" value="<%= tablette._id %>" class="product_id">
+            <div class="button addToCart" role="button" aria-label="ajouter au panier">
+                <button class='addToCart_btn'> <i class="fa-solid fa-spinner cart_btn_icons"></i> <span>Ajouter Au Panier</span></button>
+            </div>
+        </div>
+    <% }) %>
+<% } else {%>
+    <p>Les ordinateurs portables serons disponibles prochainement</p>
+<% } %>

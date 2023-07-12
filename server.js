@@ -16,6 +16,9 @@ const allinOneRoutes = require("./routes/allinOneRoutes")
 const monitorRoutes = require("./routes/monitorRoutes")
 const orderRoutes = require("./routes/orderRoutes")
 const productsRoutes = require("./routes/productsRoutes")
+const tabletteRoutes = require("./routes/tabletteRoutes")
+const smartphoneRoutes = require("./routes/smartphoneRoutes")
+const accessoriesRoutes = require("./routes/accessoriesRoutes")
 
 // gitHub url:  https://github.com/Iam-Hafiz/digital-products-ecommerce-website.git
 
@@ -61,6 +64,9 @@ app.use(monitorRoutes);
 app.use(userRoutes);
 app.use(orderRoutes);
 app.use(productsRoutes);
+app.use(tabletteRoutes);
+app.use(smartphoneRoutes);
+app.use(accessoriesRoutes);
 
 app.use((req, res) => {
     res.status(404).render('main-views/html404', { title: 'Not found 404'});

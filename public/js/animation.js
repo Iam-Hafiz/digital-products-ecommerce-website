@@ -18,6 +18,6 @@ function reveal(item, wrapper) {
 // slide down main content on loading
 addEventListener('DOMContentLoaded', () => {
   //$('.toggle_btn').prev().slideUp();
-  $('.container').slideDown(750);
+  $('.container').slideDown(500);
 });
 

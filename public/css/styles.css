@@ -141,10 +141,10 @@ img {
 /* styles du modèle de démo */
 body {
     font-size: 1.6rem;
-    /*background-color: rgb(238, 238, 238);
-    font-family: arial, sans-serif; */
-    font-family: 'ABeeZee';
-    font-style: normal;
+    background-color: rgb(238, 238, 238);
+    font-family: arial, sans-serif; 
+    /*font-family: 'ABeeZee';
+    font-style: normal;*/
     line-height: 2;
     margin: 0;
     padding: 0;
@@ -182,7 +182,6 @@ header {
     background-color: var(--bg-color);
     padding: 0 var(--padding-header-foooter-left-right);
     margin: auto;
-    box-shadow: inset 0.5rem 0.5rem 5px 5px rgb(20, 29, 37), 0.2rem 0.2rem 2px 2px rgb(20, 29, 37);
 }
 
 h2 {
@@ -245,7 +244,6 @@ input:focus {
     flex-direction: column;
     align-items: center;
     color: rgb(0, 0, 0);
-    box-shadow: inset 0.5rem 0.5rem 5px 5px rgb(92, 92, 92), 0.2rem 0.2rem 2px 2px rgb(128, 128, 128);
 }
 
 .nav ul:first-child a {
@@ -255,7 +253,10 @@ input:focus {
 .nav ul:first-child a,
 .nav ul:nth-child(2) a {
     color: var(--text-color);
-    box-shadow: inset 0.5rem 0.5rem 5px 5px rgb(20, 29, 37), 0.2rem 0.2rem 2px 2px rgb(20, 29, 37);
+}
+
+.nav ul:nth-child(4) li {
+    box-shadow: inset 3px 3px 3px 3px rgb(128, 128, 128), 2px 2px 2px 2px rgb(156, 156, 156);
 }
 
 .nav ul a,
@@ -267,7 +268,6 @@ footer input[type="submit"] {
 footer input[type="submit"]:hover {
     color: var(--text-color);
     background: rgb(44, 44, 255);
-    box-shadow: inset 0.5rem 0.5rem 5px 5px rgb(0, 0, 138), 0.2rem 0.2rem 2px 2px rgb(0, 0, 138);
 }
 
 .nav ul a:active,
@@ -280,7 +280,6 @@ footer input[type="submit"]:active {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    box-shadow: inset 0.5rem 0.5rem 5px 5px rgb(20, 29, 37), 0.2rem 0.2rem 2px 2px rgb(20, 29, 37);
 }
 
 .nav ul:nth-child(4) {
@@ -405,8 +404,8 @@ header li {
     background-color: rgb(255, 255, 255);
     padding: 1rem;
     border-radius: var(--border-radius);
-    font-family: 'Abhaya Libre';
-    font-style: normal;
+    /*font-family: 'Abhaya Libre';
+    font-style: normal;*/
 }
 
 .container ul {
@@ -440,7 +439,7 @@ header li {
     height: 0;
     border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: inset 0.7rem 0.7rem 7px 7px rgb(128, 128, 128), 0.2rem 0.2rem 2px 2px rgb(128, 128, 128);
+    box-shadow: inset 0.4rem 0.4rem 4px 4px rgb(128, 128, 128), 2px 2px 2px 2px rgb(128, 128, 128);
     opacity: 0;
     transition: all 1.5s ease;
 }
@@ -448,7 +447,7 @@ header li {
 .animate_product_display {
     opacity: 1;
     height: auto;
-    animation: product_display 1.5s ease;
+    animation: product_display 1s ease;
 }
 
 @keyframes product_display {
@@ -458,19 +457,19 @@ header li {
 
 .product_specifications:hover {
     font-weight: bold;
-    box-shadow: inset 1rem 1rem 10px rgb(128, 128, 128),  0.2rem 0.2rem 2px 2px rgb(128, 128, 128);
+    box-shadow: inset 0.5rem 0.5rem 5px 5px rgb(128, 128, 128),  2px 2px 2px 2px rgb(128, 128, 128);
     background-color: rgb(255, 248, 210);
     transform: scale(1.02);
 }
 
 /** show or hide  more details *****************************************/
-
+/* 
 .product_specifications ul {
-    font-family: 'Abhaya Libre';
+   font-family: 'Abhaya Libre';
     font-style: normal;
     font-weight: 800;
 }
-
+*/
 .product_img_wrapper {
     display: flex;
     justify-content: center;

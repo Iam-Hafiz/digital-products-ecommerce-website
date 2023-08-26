@@ -53,7 +53,10 @@ addEventListener('DOMContentLoaded', async (e) => {
         buttons[i].addEventListener('click', (event) => {
             const audio = document.querySelector(".addToCart_btn_audio");
             if(audio){
-                playAudio(audio)
+                audio.volume = 0.1;
+                setTimeout(() => {
+                    playAudio(audio)
+                }, 1000)
             }
             const itemId = buttons[i].previousElementSibling.value;
             //console.log('itemId: ', itemId, typeof itemId)
@@ -72,7 +75,7 @@ addEventListener('DOMContentLoaded', async (e) => {
                 spinIcon[i].classList.replace("spin_icon", "checked_icon");
                 spinIcon[i].classList.replace("fa-spinner", "fa-check");
                 btnText[i].textContent = "Bien ajouté";
-            }, 1000); //1s = 1000ms
+            }, 200); //1s = 1000ms
         });
     }
 });
@@ -174,6 +177,7 @@ if(deleteButtonsB){
         deleteButtonsB[i].addEventListener('click', (e) => {
             const audio = document.querySelector(".cart_deleteicon_audio");
             if(audio){
+                audio.volume = 0.2;
                 playAudio(audio)
             }
             let cartItems = JSON.parse(window.localStorage.getItem("productsInLocalStorge"))

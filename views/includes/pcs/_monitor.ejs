@@ -3,7 +3,7 @@
     <% monitors.forEach((monitor) => {  %>
         <div class="product_specifications" aria-label="ordinateurs portables">
             <h3 class="product_title"><%= monitor.title %></h3>
-            <a href="/monitor/details/<%= monitor._id %>" class="img_wrapper" tabindex="-1"><img src="../images/monitors/<%= monitor.image %>" alt="thinkPad gen 1 image" tabindex="0"></a>
+            <a href="/monitor/<%= monitor._id %>" class="img_wrapper" tabindex="-1"><img src="../images/monitors/<%= monitor.image %>" alt="thinkPad gen 1 image" tabindex="0"></a>
             <ul class="product_description_ul">
                 <% monitor.description.forEach( element => { %>
                         <li> <%= element %> </li>
@@ -14,7 +14,7 @@
                 <span><i class="fa-solid fa-angle-down fa-beat"></i></span>
             </div>
             <div class="more-details-link-wrapper">
-                <a class= "more-details-link" href="/monitor/details/<%= monitor._id %>">En Savoir Plus</a>
+                <a class= "more-details-link" href="/monitor/<%= monitor._id %>">En Savoir Plus</a>
             </div>
             <div> <%= monitor.price %>,00 €</div>
             <div>Code de réduction: SPRING</div>

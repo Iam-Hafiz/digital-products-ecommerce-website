@@ -8,6 +8,6 @@ const router = express.Router();
 router.get('/monitor', monitorController.monitorPage);
 
 //monitor details
-router.get('/monitor/details/:id', monitorController.monitorDetails);
+router.get('/monitor/:id', monitorController.monitorDetails);
 
 module.exports = router;

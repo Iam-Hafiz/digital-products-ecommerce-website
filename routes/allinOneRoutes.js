@@ -8,6 +8,6 @@ const router = express.Router();
 router.get('/all-inOne', allinOneController.allinOnePage);
 
 //all in one details
-router.get('/all-inOne/details/:id', allinOneController.allinOneDetails);
+router.get('/allinOne/:id', allinOneController.allinOneDetails);
 
 module.exports = router;

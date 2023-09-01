@@ -140,7 +140,7 @@ function displayCart() {
                 <div class="cart_product_container">
                     <div class="cart_product product_header">
                         <button class="delete_cart_item" aria-label="supprimer"><i class="fa-solid fa-trash-can"></i></button>
-                        <a href="laptop/${item._id}" tabindex="-1"><img src="/images/${item.productType + "s"}/${item.image}" alt="image du produit" tabindex="0"></a>
+                        <a href="${item.productType}/${item._id}" tabindex="-1"><img src="/images/${item.productType + "s"}/${item.image}" alt="image du produit" tabindex="0"></a>
                         <span class="cart_product_title">${item.title}</span>
                     </div>
                     <div class="cart_price other_header">${item.price},00 €</div>
@@ -177,7 +177,7 @@ if(deleteButtonsB){
         deleteButtonsB[i].addEventListener('click', (e) => {
             const audio = document.querySelector(".cart_deleteicon_audio");
             if(audio){
-                audio.volume = 0.2;
+                audio.volume = 0.1;
                 playAudio(audio)
             }
             let cartItems = JSON.parse(window.localStorage.getItem("productsInLocalStorge"))

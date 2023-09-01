@@ -3,7 +3,7 @@
     <% allinOnes.forEach((computer) => {  %>
         <div class="product_specifications" aria-label="ordinateurs portables">
             <h3 class="product_title"><%= computer.title %></h3>
-            <a href="/all-inOne/details/<%= computer._id %>" class="img_wrapper" tabindex="-1"><img src="/images/allinOnes/<%= computer.image %>" alt="thinkPad gen 1 image" tabindex="0"></a>
+            <a href="/allinOne/<%= computer._id %>" class="img_wrapper" tabindex="-1"><img src="/images/allinOnes/<%= computer.image %>" alt="thinkPad gen 1 image" tabindex="0"></a>
             <ul class="product_description_ul">
                 <% computer.description.forEach( element => { %>
                         <li> <%= element %> </li>
@@ -14,7 +14,7 @@
                 <span><i class="fa-solid fa-angle-down fa-beat"></i></span>
             </div>
             <div class="more-details-link-wrapper">
-                <a class= "more-details-link" href="/all-inOne/details/<%= computer._id %>">En Savoir Plus</a>
+                <a class= "more-details-link" href="/allinOne/<%= computer._id %>">En Savoir Plus</a>
             </div>
             <div> <%= computer.price %>,00 €</div>
             <div>Code de réduction: SPRING</div>

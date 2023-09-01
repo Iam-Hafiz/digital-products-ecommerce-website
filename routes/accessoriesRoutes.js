@@ -13,6 +13,7 @@ router.get('/Accessories', getAccessoriesController.accessories_Page);
 
 // get Accessories details on click
 router.get('/Accessories/:id', getAccessoriesController.accessories_Details);
+router.get('/Accessorie/:id', getAccessoriesController.accessories_Details);
 
 // find a Accessories get and  post request, any user
 router.get('/find-Accessories', getAccessoriesController.findAccessories_Get);
